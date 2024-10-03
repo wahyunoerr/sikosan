@@ -49,7 +49,8 @@
                                             class="form-control @error('password')
                                             is-invalid
                                         @enderror"
-                                            placeholder="Password" required autocomplete="current-password">
+                                            placeholder="Password" name="password" required
+                                            autocomplete="current-password">
                                         <button class="btn btn-outline-secoondary"
                                             style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); padding: 0 10px; height: 100%;"
                                             type="button" @click="show = !show">
