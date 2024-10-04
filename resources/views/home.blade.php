@@ -2,362 +2,322 @@
 
 @section('title', 'Dashboard')
 @section('content')
-    <div class="row">
-        <div class="col-lg-3 col-sm-6">
-            <div class="card gradient-1">
-                <div class="card-body">
-                    <h3 class="card-title text-white">Products Sold</h3>
-                    <div class="d-inline-block">
-                        <h2 class="text-white">4565</h2>
-                        <p class="text-white mb-0">Jan - March 2019</p>
-                    </div>
-                    <span class="float-right display-5 opacity-5"><i class="fa fa-shopping-cart"></i></span>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card gradient-2">
-                <div class="card-body">
-                    <h3 class="card-title text-white">Net Profit</h3>
-                    <div class="d-inline-block">
-                        <h2 class="text-white">$ 8541</h2>
-                        <p class="text-white mb-0">Jan - March 2019</p>
-                    </div>
-                    <span class="float-right display-5 opacity-5"><i class="fa fa-money"></i></span>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card gradient-3">
-                <div class="card-body">
-                    <h3 class="card-title text-white">New Customers</h3>
-                    <div class="d-inline-block">
-                        <h2 class="text-white">4565</h2>
-                        <p class="text-white mb-0">Jan - March 2019</p>
-                    </div>
-                    <span class="float-right display-5 opacity-5"><i class="fa fa-users"></i></span>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card gradient-4">
-                <div class="card-body">
-                    <h3 class="card-title text-white">Customer Satisfaction</h3>
-                    <div class="d-inline-block">
-                        <h2 class="text-white">99%</h2>
-                        <p class="text-white mb-0">Jan - March 2019</p>
-                    </div>
-                    <span class="float-right display-5 opacity-5"><i class="fa fa-heart"></i></span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card">
-                        <div class="card-body pb-0 d-flex justify-content-between">
-                            <div>
-                                <h4 class="mb-1">Product Sales</h4>
-                                <p>Total Earnings of the Month</p>
-                                <h3 class="m-0">$ 12,555</h3>
+    <div class="container-fluid dashboard-default">
+        <div class="row">
+            <div class="col-xxl-6 col-xl-5 col-lg-6 dash-45 box-col-40">
+                <div class="card profile-greeting">
+                    <div class="card-body">
+                        <div class="d-sm-flex d-block justify-content-between">
+                            <div class="flex-grow-1">
+                                <div class="weather d-flex">
+                                    <h2 class="f-w-400"> <span>28<sup><i class="fa fa-circle-o f-10"></i></sup>C </span></h2>
+                                    <div class="span sun-bg"><i class="icofont icofont-sun font-primary"></i></div>
+                                </div><span class="font-primary f-w-700">Sunny Day</span>
+                                <p>Beautiful Sunny Day Walk</p>
                             </div>
-                            <div>
-                                <ul>
-                                    <li class="d-inline-block mr-3"><a class="text-dark" href="#">Day</a></li>
-                                    <li class="d-inline-block mr-3"><a class="text-dark" href="#">Week</a></li>
-                                    <li class="d-inline-block"><a class="text-dark" href="#">Month</a>
+                            <div class="badge-group">
+                                <div class="badge badge-light-primary f-12"> <i class="fa fa-clock-o"></i><span
+                                        id="txt"></span></div>
+                            </div>
+                        </div>
+                        <div class="greeting-user">
+                            <div class="profile-vector">
+                                <ul class="dots-images">
+                                    <li class="dot-small bg-info dot-1"></li>
+                                    <li class="dot-medium bg-primary dot-2"></li>
+                                    <li class="dot-medium bg-info dot-3"></li>
+                                    <li class="semi-medium bg-primary dot-4"></li>
+                                    <li class="dot-small bg-info dot-5"></li>
+                                    <li class="dot-big bg-info dot-6"></li>
+                                    <li class="dot-small bg-primary dot-7"></li>
+                                    <li class="semi-medium bg-primary dot-8"></li>
+                                    <li class="dot-big bg-info dot-9"></li>
+                                </ul><img class="img-fluid" src="../assets/images/dashboard/default/profile.png"
+                                    alt="">
+                                <ul class="vector-image">
+                                    <li> <img src="../assets/images/dashboard/default/ribbon1.png" alt=""></li>
+                                    <li> <img src="../assets/images/dashboard/default/ribbon3.png" alt=""></li>
+                                    <li> <img src="../assets/images/dashboard/default/ribbon4.png" alt=""></li>
+                                    <li> <img src="../assets/images/dashboard/default/ribbon5.png" alt=""></li>
+                                    <li> <img src="../assets/images/dashboard/default/ribbon6.png" alt=""></li>
+                                    <li> <img src="../assets/images/dashboard/default/ribbon7.png" alt=""></li>
+                                </ul>
+                            </div>
+                            <h4><a href="user-profile.html"><span>Welcome Back</span> John </a><span class="right-circle"><i
+                                        class="fa fa-check-circle font-primary f-14 middle"></i></span>
+                            </h4>
+                            <div><span class="badge badge-primary">Your 5</span><span
+                                    class="font-primary f-12 middle f-w-500 ms-2"> Task Is Pending</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 box-col-25">
+                <div class="card total-revenue overflow-hidden">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between">
+                            <div class="flex-grow-1">
+                                <p class="square-after f-w-600 header-text-primary">Total Revenue<i
+                                        class="fa fa-circle"></i></p>
+                                <h4>96.564%</h4>
+                            </div>
+                            <div class="setting-list">
+                                <ul class="list-unstyled setting-option">
+                                    <li>
+                                        <div class="setting-light"><i class="icon-layout-grid2"></i></div>
                                     </li>
+                                    <li><i class="view-html fa fa-code font-white"></i></li>
+                                    <li><i class="icofont icofont-maximize full-card font-white"></i></li>
+                                    <li><i class="icofont icofont-minus minimize-card font-white"></i></li>
+                                    <li><i class="icofont icofont-refresh reload-card font-white"></i></li>
+                                    <li><i class="icofont icofont-error close-card font-white"> </i></li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="chart-wrapper">
-                            <canvas id="chart_widget_2"></canvas>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-                                <div class="w-100 mr-2">
-                                    <h6>Pixel 2</h6>
-                                    <div class="progress" style="height: 6px">
-                                        <div class="progress-bar bg-danger" style="width: 40%"></div>
-                                    </div>
-                                </div>
-                                <div class="ml-2 w-100">
-                                    <h6>iPhone X</h6>
-                                    <div class="progress" style="height: 6px">
-                                        <div class="progress-bar bg-primary" style="width: 80%"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="revenue-chart" id="revenue-chart"></div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="row">
-        <div class="col-lg-6 col-md-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Order Summary</h4>
-                    <div id="morris-bar-chart"></div>
-                </div>
-            </div>
-
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="card card-widget">
-                <div class="card-body">
-                    <h5 class="text-muted">Order Overview </h5>
-                    <h2 class="mt-4">5680</h2>
-                    <span>Total Revenue</span>
-                    <div class="mt-4">
-                        <h4>30</h4>
-                        <h6>Online Order <span class="pull-right">30%</span></h6>
-                        <div class="progress mb-3" style="height: 7px">
-                            <div class="progress-bar bg-primary" style="width: 30%;" role="progressbar">
-                                <span class="sr-only">30% Order</span>
+                <div class="card total-investment">
+                    <div class="card-header pb-0">
+                        <div class="d-flex justify-content-between">
+                            <div class="flex-grow-1">
+                                <p class="square-after f-w-600 header-text-primary">Total Investment<i class="fa fa-circle">
+                                    </i></p>
+                                <h4>96.564%</h4>
                             </div>
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                        <h4>50</h4>
-                        <h6 class="m-t-10 text-muted">Offline Order <span class="pull-right">50%</span>
-                        </h6>
-                        <div class="progress mb-3" style="height: 7px">
-                            <div class="progress-bar bg-success" style="width: 50%;" role="progressbar">
-                                <span class="sr-only">50% Order</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                        <h4>20</h4>
-                        <h6 class="m-t-10 text-muted">Cash On Develery <span class="pull-right">20%</span>
-                        </h6>
-                        <div class="progress mb-3" style="height: 7px">
-                            <div class="progress-bar bg-warning" style="width: 20%;" role="progressbar">
-                                <span class="sr-only">20% Order</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="card">
-                <div class="card-body px-0">
-                    <h4 class="card-title px-4 mb-3">Todo</h4>
-                    <div class="todo-list">
-                        <div class="tdl-holder">
-                            <div class="tdl-content">
-                                <ul id="todo_list">
-                                    <li><label><input type="checkbox"><i></i><span>Get up</span><a href='#'
-                                                class="ti-trash"></a></label></li>
-                                    <li><label><input type="checkbox" checked><i></i><span>Stand
-                                                up</span><a href='#' class="ti-trash"></a></label>
+                            <div class="setting-list">
+                                <ul class="list-unstyled setting-option">
+                                    <li>
+                                        <div class="setting-light"><i class="icon-layout-grid2"></i></div>
                                     </li>
-                                    <li><label><input type="checkbox"><i></i><span>Don't give up the
-                                                fight.</span><a href='#' class="ti-trash"></a></label></li>
-                                    <li><label><input type="checkbox" checked><i></i><span>Do something
-                                                else</span><a href='#' class="ti-trash"></a></label>
-                                    </li>
+                                    <li><i class="view-html fa fa-code font-white"></i></li>
+                                    <li><i class="icofont icofont-maximize full-card font-white"></i></li>
+                                    <li><i class="icofont icofont-minus minimize-card font-white"></i></li>
+                                    <li><i class="icofont icofont-refresh reload-card font-white"></i></li>
+                                    <li><i class="icofont icofont-error close-card font-white"> </i></li>
                                 </ul>
                             </div>
-                            <div class="px-4">
-                                <input type="text" class="tdl-new form-control"
-                                    placeholder="Write new item and hit 'Enter'...">
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="progress sm-progress-bar">
+                            <div class="progress-colors" role="progressbar" style="width: 100%" aria-valuenow="100"
+                                aria-valuemin="0" aria-valuemax="100">
+                                <div class="bg-secondary progress-1"></div>
+                                <div class="bg-primary progress-2"></div>
+                            </div>
+                        </div>
+                        <div class="bottom-progress"><span class="badge round-badge-primary font-worksans">3.56% <i
+                                    class="fa fa-caret-up"></i></span><span
+                                class="pull-right font-primary font-worksans f-w-700">75%</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xxl-3 col-xl-4 col-md-6 dash-30 box-col-35">
+                <div class="card our-user">
+                    <div class="card-header pb-0">
+                        <div class="d-flex justify-content-between">
+                            <div class="flex-grow-1">
+                                <p class="square-after f-w-600 header-text-primary">Our Total Users<i
+                                        class="fa fa-circle"></i></p>
+                                <h4>96.564%</h4>
+                            </div>
+                            <div class="setting-list">
+                                <ul class="list-unstyled setting-option">
+                                    <li>
+                                        <div class="setting-light"><i class="icon-layout-grid2"></i></div>
+                                    </li>
+                                    <li><i class="view-html fa fa-code font-white"></i></li>
+                                    <li><i class="icofont icofont-maximize full-card font-white"></i></li>
+                                    <li><i class="icofont icofont-minus minimize-card font-white"></i></li>
+                                    <li><i class="icofont icofont-refresh reload-card font-white"></i></li>
+                                    <li><i class="icofont icofont-error close-card font-white"> </i></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="text-center">
-                        <img src="./images/users/8.jpg" class="rounded-circle" alt="">
-                        <h5 class="mt-3 mb-1">Ana Liem</h5>
-                        <p class="m-0">Senior Manager</p>
-                        <!-- <a href="javascript:void()" class="btn btn-sm btn-warning">Send Message</a> -->
+                    <div class="card-body">
+                        <div class="user-chart">
+                            <div id="user-chart"></div>
+                            <div class="icon-donut"><i data-feather="arrow-up-circle"></i></div>
+                        </div>
+                        <ul>
+                            <li>
+                                <p class="f-w-600 font-primary f-12">Desktop</p><span class="f-w-600">96.564%</span>
+                            </li>
+                            <li>
+                                <p class="f-w-600 font-primary f-12">Mobile </p><span class="f-w-600">92.624%</span>
+                            </li>
+                            <li>
+                                <p class="f-w-600 font-primary f-12">Tablet </p><span class="f-w-600">46.564%</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="text-center">
-                        <img src="./images/users/5.jpg" class="rounded-circle" alt="">
-                        <h5 class="mt-3 mb-1">John Abraham</h5>
-                        <p class="m-0">Store Manager</p>
-                        <!-- <a href="javascript:void()" class="btn btn-sm btn-warning">Send Message</a> -->
+            <div class="col-xl-4 col-lg-6 box-col-30 xl-30">
+                <div class="card our-earning">
+                    <div class="card-header pb-0">
+                        <div class="d-flex justify-content-between">
+                            <div class="flex-grow-1">
+                                <p class="square-after f-w-600 header-text-primary">Our Total Earning<i
+                                        class="fa fa-circle"> </i></p>
+                                <h4>96.564%</h4>
+                                <div class="setting-list">
+                                    <ul class="list-unstyled setting-option">
+                                        <li>
+                                            <div class="setting-light"><i class="icon-layout-grid2"></i>
+                                            </div>
+                                        </li>
+                                        <li><i class="view-html fa fa-code font-white"></i></li>
+                                        <li><i class="icofont icofont-maximize full-card font-white"></i>
+                                        </li>
+                                        <li><i class="icofont icofont-minus minimize-card font-white"></i>
+                                        </li>
+                                        <li><i class="icofont icofont-refresh reload-card font-white"></i>
+                                        </li>
+                                        <li><i class="icofont icofont-error close-card font-white"> </i>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="earning-chart">
+                            <div id="earning-chart"></div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <ul class="d-sm-flex d-block">
+                            <li>
+                                <p class="f-w-600 font-primary f-12">Daily Earning</p><span class="f-w-600">96.564%</span>
+                            </li>
+                            <li>
+                                <p class="f-w-600 font-primary f-12">Monthly Earning </p><span
+                                    class="f-w-600">96.564%</span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="text-center">
-                        <img src="./images/users/7.jpg" class="rounded-circle" alt="">
-                        <h5 class="mt-3 mb-1">John Doe</h5>
-                        <p class="m-0">Sales Man</p>
-                        <!-- <a href="javascript:void()" class="btn btn-sm btn-warning">Send Message</a> -->
+            <div class="col-xl-4 col-md-6 box-col-40 xl-40">
+                <div class="card appointment-detail">
+                    <div class="card-header pb-0">
+                        <div class="d-flex justify-content-between">
+                            <div class="flex-grow-1">
+                                <p class="square-after f-w-600 header-text-primary">total appointment<i
+                                        class="fa fa-circle"> </i></p>
+                                <h4>12 meet</h4>
+                            </div>
+                            <div class="setting-list">
+                                <ul class="list-unstyled setting-option">
+                                    <li>
+                                        <div class="setting-light"><i class="icon-layout-grid2"></i>
+                                        </div>
+                                    </li>
+                                    <li><i class="view-html fa fa-code font-white"></i></li>
+                                    <li><i class="icofont icofont-maximize full-card font-white"></i></li>
+                                    <li><i class="icofont icofont-minus minimize-card font-white"></i>
+                                    </li>
+                                    <li><i class="icofont icofont-refresh reload-card font-white"></i>
+                                    </li>
+                                    <li><i class="icofont icofont-error close-card font-white"> </i></li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="card-body">
-                    <div class="text-center">
-                        <img src="./images/users/1.jpg" class="rounded-circle" alt="">
-                        <h5 class="mt-3 mb-1">Mehedi Titas</h5>
-                        <p class="m-0">Online Marketer</p>
-                        <!-- <a href="javascript:void()" class="btn btn-sm btn-warning">Send Message</a> -->
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="active-member">
-                        <div class="table-responsive">
-                            <table class="table table-xs mb-0">
-                                <thead>
-                                    <tr>
-                                        <th>Customers</th>
-                                        <th>Product</th>
-                                        <th>Country</th>
-                                        <th>Status</th>
-                                        <th>Payment Method</th>
-                                        <th>Activity</th>
-                                    </tr>
-                                </thead>
+                    <div class="card-body">
+                        <div class="table-responsive theme-scrollbar">
+                            <table class="table">
                                 <tbody>
                                     <tr>
-                                        <td><img src="./images/avatar/1.jpg" class=" rounded-circle mr-3"
-                                                alt="">Sarah Smith</td>
-                                        <td>iPhone X</td>
                                         <td>
-                                            <span>United States</span>
-                                        </td>
-                                        <td>
-                                            <div>
-                                                <div class="progress" style="height: 6px">
-                                                    <div class="progress-bar bg-success" style="width: 50%"></div>
+                                            <div class="d-flex"><img class="img-fluid align-top circle"
+                                                    src="../assets/images/dashboard/default/01.png" alt="">
+                                                <div class="flex-grow-1"><a href="user-profile.html"><span>Ossim
+                                                            keter</span></a>
+                                                    <p class="mb-0">1 Hour</p>
                                                 </div>
+                                                <div class="active-status active-online"></div>
                                             </div>
                                         </td>
-                                        <td><i class="fa fa-circle-o text-success  mr-2"></i> Paid</td>
-                                        <td>
-                                            <span>Last Login</span>
-                                            <span class="m-0 pl-3">10 sec ago</span>
+                                        <td>16 August </td>
+                                        <td class="text-end">
+                                            <button class="btn btn-primary" type="button"
+                                                onclick="document.location='user-cards.html'">Pending</button>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><img src="./images/avatar/2.jpg" class=" rounded-circle mr-3"
-                                                alt="">Walter R.</td>
-                                        <td>Pixel 2</td>
-                                        <td><span>Canada</span></td>
                                         <td>
-                                            <div>
-                                                <div class="progress" style="height: 6px">
-                                                    <div class="progress-bar bg-success" style="width: 50%"></div>
+                                            <div class="d-flex"><img class="img-fluid align-top circle"
+                                                    src="../assets/images/dashboard/default/02.png" alt="">
+                                                <div class="flex-grow-1"><a href="user-profile.html"><span>Venter
+                                                            loren</span></a>
+                                                    <p class="mb-0">Now</p>
                                                 </div>
+                                                <div class="active-status active-busy"></div>
                                             </div>
                                         </td>
-                                        <td><i class="fa fa-circle-o text-success  mr-2"></i> Paid</td>
-                                        <td>
-                                            <span>Last Login</span>
-                                            <span class="m-0 pl-3">50 sec ago</span>
+                                        <td>21 September </td>
+                                        <td class="text-end">
+                                            <button class="btn btn-secondary" type="button"
+                                                onclick="document.location='user-cards.html'">Done<i
+                                                    class="fa fa-check-circle"></i></button>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><img src="./images/avatar/3.jpg" class=" rounded-circle mr-3"
-                                                alt="">Andrew D.</td>
-                                        <td>OnePlus</td>
-                                        <td><span>Germany</span></td>
                                         <td>
-                                            <div>
-                                                <div class="progress" style="height: 6px">
-                                                    <div class="progress-bar bg-warning" style="width: 50%"></div>
+                                            <div class="d-flex"><img class="img-fluid align-top circle"
+                                                    src="../assets/images/dashboard/default/03.png" alt="">
+                                                <div class="flex-grow-1"><a href="user-profile.html"><span>Fran
+                                                            loain</span></a>
+                                                    <p class="mb-0">2 Day After</p>
                                                 </div>
+                                                <div class="active-status active-offline"></div>
                                             </div>
                                         </td>
-                                        <td><i class="fa fa-circle-o text-warning  mr-2"></i> Pending</td>
-                                        <td>
-                                            <span>Last Login</span>
-                                            <span class="m-0 pl-3">10 sec ago</span>
+                                        <td>06 March</td>
+                                        <td class="text-end">
+                                            <button class="btn btn-success" type="button"
+                                                onclick="document.location='user-cards.html'">Pending</button>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><img src="./images/avatar/6.jpg" class=" rounded-circle mr-3" alt="">
-                                            Megan S.</td>
-                                        <td>Galaxy</td>
-                                        <td><span>Japan</span></td>
                                         <td>
-                                            <div>
-                                                <div class="progress" style="height: 6px">
-                                                    <div class="progress-bar bg-success" style="width: 50%"></div>
+                                            <div class="d-flex"><img class="img-fluid align-top circle"
+                                                    src="../assets/images/dashboard/default/04.png" alt="">
+                                                <div class="flex-grow-1"><a href="user-profile.html"><span>Loften
+                                                            Horen</span></a>
+                                                    <p class="mb-0">Day End</p>
                                                 </div>
+                                                <div class="active-status active-online"></div>
                                             </div>
                                         </td>
-                                        <td><i class="fa fa-circle-o text-success  mr-2"></i> Paid</td>
-                                        <td>
-                                            <span>Last Login</span>
-                                            <span class="m-0 pl-3">10 sec ago</span>
+                                        <td>12 February</td>
+                                        <td class="text-end">
+                                            <button class="btn btn-info" type="button"
+                                                onclick="document.location='user-cards.html'">Pending</button>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td><img src="./images/avatar/4.jpg" class=" rounded-circle mr-3" alt="">
-                                            Doris R.</td>
-                                        <td>Moto Z2</td>
-                                        <td><span>England</span></td>
                                         <td>
-                                            <div>
-                                                <div class="progress" style="height: 6px">
-                                                    <div class="progress-bar bg-success" style="width: 50%"></div>
+                                            <div class="d-flex"><img class="img-fluid align-top circle"
+                                                    src="../assets/images/dashboard/default/05.png" alt="">
+                                                <div class="flex-grow-1"><a href="user-profile.html"><span>Loie
+                                                            fenter</span></a>
+                                                    <p class="mb-0">2 Day After</p>
                                                 </div>
+                                                <div class="active-status active-offline"></div>
                                             </div>
                                         </td>
-                                        <td><i class="fa fa-circle-o text-success  mr-2"></i> Paid</td>
-                                        <td>
-                                            <span>Last Login</span>
-                                            <span class="m-0 pl-3">10 sec ago</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><img src="./images/avatar/5.jpg" class=" rounded-circle mr-3"
-                                                alt="">Elizabeth W.</td>
-                                        <td>Notebook Asus</td>
-                                        <td><span>China</span></td>
-                                        <td>
-                                            <div>
-                                                <div class="progress" style="height: 6px">
-                                                    <div class="progress-bar bg-warning" style="width: 50%"></div>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td><i class="fa fa-circle-o text-warning  mr-2"></i> Pending</td>
-                                        <td>
-                                            <span>Last Login</span>
-                                            <span class="m-0 pl-3">10 sec ago</span>
+                                        <td>06 March</td>
+                                        <td class="text-end">
+                                            <button class="btn btn-danger" type="button"
+                                                onclick="document.location='user-cards.html'">Pending</button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -366,198 +326,273 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-xl-3 col-lg-6 col-sm-6 col-xxl-6">
-
-            <div class="card">
-                <div class="chart-wrapper mb-4">
-                    <div class="px-4 pt-4 d-flex justify-content-between">
-                        <div>
-                            <h4>Sales Activities</h4>
-                            <p>Last 6 Month</p>
-                        </div>
-                        <div>
-                            <span><i class="fa fa-caret-up text-success"></i></span>
-                            <h4 class="d-inline-block text-success">720</h4>
-                            <p class=" text-danger">+120.5(5.0%)</p>
-                        </div>
-                    </div>
-                    <div>
-                        <canvas id="chart_widget_3"></canvas>
-                    </div>
-                </div>
-                <div class="card-body border-top pt-4">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <ul>
-                                <li>5% Negative Feedback</li>
-                                <li>95% Positive Feedback</li>
-                            </ul>
-                            <div>
-                                <h5>Customer Feedback</h5>
-                                <h3>385749</h3>
+            <div class="col-xl-4 col-md-6 box-col-30 xl-30">
+                <div class="card use-country">
+                    <div class="card-header pb-0">
+                        <div class="d-flex justify-content-between">
+                            <div class="flex-grow-1">
+                                <p class="square-after f-w-600 header-text-primary">User By Country<i
+                                        class="fa fa-circle"> </i></p>
+                                <h4>96.564%</h4>
+                            </div>
+                            <div class="setting-list">
+                                <ul class="list-unstyled setting-option">
+                                    <li>
+                                        <div class="setting-light"><i class="icon-layout-grid2"></i>
+                                        </div>
+                                    </li>
+                                    <li><i class="view-html fa fa-code font-white"></i></li>
+                                    <li><i class="icofont icofont-maximize full-card font-white"></i></li>
+                                    <li><i class="icofont icofont-minus minimize-card font-white"></i>
+                                    </li>
+                                    <li><i class="icofont icofont-refresh reload-card font-white"></i>
+                                    </li>
+                                    <li><i class="icofont icofont-error close-card font-white"> </i></li>
+                                </ul>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div id="chart_widget_3_1"></div>
+                    </div>
+                    <div class="card-body">
+                        <div class="jvector-map-height" id="asia"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-12 box-col-12">
+                <div class="card total-growth">
+                    <div class="card-header pb-0">
+                        <div class="d-flex justify-content-between">
+                            <div class="flex-grow-1">
+                                <p class="square-after f-w-600 header-text-primary">Our Total Growth<i
+                                        class="fa fa-circle"> </i></p>
+                                <h4>96.564%</h4>
+                            </div>
+                            <div class="setting-list">
+                                <ul class="list-unstyled setting-option">
+                                    <li>
+                                        <div class="setting-light"><i class="icon-layout-grid2"></i>
+                                        </div>
+                                    </li>
+                                    <li><i class="view-html fa fa-code font-white"></i></li>
+                                    <li><i class="icofont icofont-maximize full-card font-white"></i></li>
+                                    <li><i class="icofont icofont-minus minimize-card font-white"></i>
+                                    </li>
+                                    <li><i class="icofont icofont-refresh reload-card font-white"></i>
+                                    </li>
+                                    <li><i class="icofont icofont-error close-card font-white"> </i></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body pb-0">
+                        <div class="growth-chart">
+                            <div id="growth-chart"></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xl-3 col-lg-6 col-sm-6 col-xxl-6">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title">Activity</h4>
-                    <div id="activity">
-                        <div class="media border-bottom-1 pt-3 pb-3">
-                            <img width="35" src="./images/avatar/1.jpg" class="mr-3 rounded-circle">
-                            <div class="media-body">
-                                <h5>Received New Order</h5>
-                                <p class="mb-0">I shared this on my fb wall a few months back,</p>
-                            </div><span class="text-muted ">April 24, 2018</span>
+            <div class="col-xl-4 col-md-6 box-col-33">
+                <div class="card">
+                    <div class="card-header pb-0">
+                        <div class="d-flex justify-content-between">
+                            <div class="flex-grow-1">
+                                <p class="square-after f-w-600 header-text-primary">Recent Activity<i
+                                        class="fa fa-circle"> </i></p>
+                                <h4>New & Update</h4>
+                            </div>
+                            <div class="setting-list">
+                                <ul class="list-unstyled setting-option">
+                                    <li>
+                                        <div class="setting-light"><i class="icon-layout-grid2"></i>
+                                        </div>
+                                    </li>
+                                    <li><i class="view-html fa fa-code font-white"></i></li>
+                                    <li><i class="icofont icofont-maximize full-card font-white"></i></li>
+                                    <li><i class="icofont icofont-minus minimize-card font-white"></i>
+                                    </li>
+                                    <li><i class="icofont icofont-refresh reload-card font-white"></i>
+                                    </li>
+                                    <li><i class="icofont icofont-error close-card font-white"> </i></li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="media border-bottom-1 pt-3 pb-3">
-                            <img width="35" src="./images/avatar/2.jpg" class="mr-3 rounded-circle">
-                            <div class="media-body">
-                                <h5>iPhone develered</h5>
-                                <p class="mb-0">I shared this on my fb wall a few months back,</p>
-                            </div><span class="text-muted ">April 24, 2018</span>
-                        </div>
-                        <div class="media border-bottom-1 pt-3 pb-3">
-                            <img width="35" src="./images/avatar/2.jpg" class="mr-3 rounded-circle">
-                            <div class="media-body">
-                                <h5>3 Order Pending</h5>
-                                <p class="mb-0">I shared this on my fb wall a few months back,</p>
-                            </div><span class="text-muted ">April 24, 2018</span>
-                        </div>
-                        <div class="media border-bottom-1 pt-3 pb-3">
-                            <img width="35" src="./images/avatar/2.jpg" class="mr-3 rounded-circle">
-                            <div class="media-body">
-                                <h5>Join new Manager</h5>
-                                <p class="mb-0">I shared this on my fb wall a few months back,</p>
-                            </div><span class="text-muted ">April 24, 2018</span>
-                        </div>
-                        <div class="media border-bottom-1 pt-3 pb-3">
-                            <img width="35" src="./images/avatar/2.jpg" class="mr-3 rounded-circle">
-                            <div class="media-body">
-                                <h5>Branch open 5 min Late</h5>
-                                <p class="mb-0">I shared this on my fb wall a few months back,</p>
-                            </div><span class="text-muted ">April 24, 2018</span>
-                        </div>
-                        <div class="media border-bottom-1 pt-3 pb-3">
-                            <img width="35" src="./images/avatar/2.jpg" class="mr-3 rounded-circle">
-                            <div class="media-body">
-                                <h5>New support ticket received</h5>
-                                <p class="mb-0">I shared this on my fb wall a few months back,</p>
-                            </div><span class="text-muted ">April 24, 2018</span>
-                        </div>
-                        <div class="media pt-3 pb-3">
-                            <img width="35" src="./images/avatar/3.jpg" class="mr-3 rounded-circle">
-                            <div class="media-body">
-                                <h5>Facebook Post 30 Comments</h5>
-                                <p class="mb-0">I shared this on my fb wall a few months back,</p>
-                            </div><span class="text-muted ">April 24, 2018</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="activity-timeline">
+                            <div class="d-flex">
+                                <div class="activity-line"></div>
+                                <div class="activity-dot-primary"></div>
+                                <div class="flex-grow-1"><span class="f-w-600 d-block">Updated
+                                        Product</span>
+                                    <p class="mb-0">I like to be real. I don't like things to be staged
+                                        or fussy.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="activity-dot-primary"></div>
+                                <div class="flex-grow-1"><span class="f-w-600 d-block">You liked James
+                                        products</span>
+                                    <p class="mb-0">If you have it, you can make anything look good.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start">
+                                <div class="activity-dot-secondary"></div>
+                                <div class="flex-grow-1"><span class="f-w-600 d-block">James just like
+                                        your product</span>
+                                    <p class="mb-0">I like to design everything to do with the body.</p>
+                                </div><i class="fa fa-circle circle-dot-primary"></i>
+                            </div>
+                            <div class="d-flex">
+                                <div class="activity-dot-primary"></div>
+                                <div class="flex-grow-1"><span class="f-w-600 d-block">Jenna commented
+                                        on your product</span>
+                                    <p class="mb-0">Fashion fades, only style remain the same.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-start">
+                                <div class="activity-dot-secondary"></div>
+                                <div class="flex-grow-1"><span class="f-w-600 d-block">Jihan Doe just
+                                        like your product</span>
+                                    <p class="mb-0">Design and style should work toward making you look
+                                        good and feel good without lot of effort.</p>
+                                </div><i class="fa fa-circle circle-dot-secondary"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xl-6 col-lg-12 col-sm-12 col-xxl-12">
-            <div class="card">
-                <div class="card-body">
-                    <h4 class="card-title mb-0">Store Location</h4>
-                    <div id="world-map" style="height: 470px;"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="row">
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="social-graph-wrapper widget-facebook">
-                    <span class="s-icon"><i class="fa fa-facebook"></i></span>
-                </div>
-                <div class="row">
-                    <div class="col-6 border-right">
-                        <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                            <h4 class="m-1">89k</h4>
-                            <p class="m-0">Friends</p>
+            <div class="col-xl-4 proorder box-col-33">
+                <div class="card user-chat">
+                    <div class="card-header pb-0">
+                        <div class="d-flex justify-content-between">
+                            <div class="flex-grow-1">
+                                <p class="square-after f-w-600 header-text-primary">Chat With Our Users<i
+                                        class="fa fa-circle"> </i></p>
+                                <h4>Chat</h4>
+                            </div>
+                            <div class="setting-list">
+                                <ul class="list-unstyled setting-option">
+                                    <li>
+                                        <div class="setting-light"><i class="icon-layout-grid2"></i>
+                                        </div>
+                                    </li>
+                                    <li><i class="view-html fa fa-code font-white"></i></li>
+                                    <li><i class="icofont icofont-maximize full-card font-white"></i></li>
+                                    <li><i class="icofont icofont-minus minimize-card font-white"></i>
+                                    </li>
+                                    <li><i class="icofont icofont-refresh reload-card font-white"></i>
+                                    </li>
+                                    <li><i class="icofont icofont-error close-card font-white"> </i></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-6">
-                        <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                            <h4 class="m-1">119k</h4>
-                            <p class="m-0">Followers</p>
+                    <div class="card-body chat-box">
+                        <div class="d-flex left-chat">
+                            <div class="flex-grow-1">
+                                <div class="message-main">
+                                    <p class="mb-0">Hii</p>
+                                </div>
+                                <div class="sub-message message-main">
+                                    <p class="mb-0">Good Evening, My Friend</p>
+                                </div>
+                            </div>
+                            <p class="f-w-500 mb-0 px-0">7:28 PM</p>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="social-graph-wrapper widget-linkedin">
-                    <span class="s-icon"><i class="fa fa-linkedin"></i></span>
-                </div>
-                <div class="row">
-                    <div class="col-6 border-right">
-                        <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                            <h4 class="m-1">89k</h4>
-                            <p class="m-0">Friends</p>
+                        <div class="d-flex right-chat">
+                            <div class="flex-grow-1 text-end">
+                                <div class="message-main pull-right">
+                                    <p class="text-start mb-0">What can do for you</p>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                            <h4 class="m-1">119k</h4>
-                            <p class="m-0">Followers</p>
+                        <div class="d-flex left-chat">
+                            <div class="flex-grow-1">
+                                <div class="sub-message message-main mt-0">
+                                    <p class="mb-0">Can i Borrow some money</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="social-graph-wrapper widget-googleplus">
-                    <span class="s-icon"><i class="fa fa-google-plus"></i></span>
-                </div>
-                <div class="row">
-                    <div class="col-6 border-right">
-                        <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                            <h4 class="m-1">89k</h4>
-                            <p class="m-0">Friends</p>
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                            <h4 class="m-1">119k</h4>
-                            <p class="m-0">Followers</p>
+                        <div class="input-group">
+                            <input class="form-control" id="mail" type="text" placeholder="Type Your Message"
+                                name="text">
+                            <div class="send-msg"><i data-feather="send"></i></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-lg-3 col-sm-6">
-            <div class="card">
-                <div class="social-graph-wrapper widget-twitter">
-                    <span class="s-icon"><i class="fa fa-twitter"></i></span>
-                </div>
-                <div class="row">
-                    <div class="col-6 border-right">
-                        <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                            <h4 class="m-1">89k</h4>
-                            <p class="m-0">Friends</p>
+            <div class="col-xl-4 col-md-6 box-col-33">
+                <div class="card our-todolist">
+                    <div class="card-header pb-0">
+                        <div class="d-flex justify-content-between">
+                            <div class="flex-grow-1">
+                                <p class="square-after f-w-600 header-text-primary">Our To-Do List<i class="fa fa-circle">
+                                    </i></p>
+                                <h4>Todo List</h4>
+                            </div>
+                            <div class="setting-list">
+                                <ul class="list-unstyled setting-option">
+                                    <li>
+                                        <div class="setting-light"><i class="icon-layout-grid2"></i>
+                                        </div>
+                                    </li>
+                                    <li><i class="view-html fa fa-code font-white"></i></li>
+                                    <li><i class="icofont icofont-maximize full-card font-white"></i></li>
+                                    <li><i class="icofont icofont-minus minimize-card font-white"></i>
+                                    </li>
+                                    <li><i class="icofont icofont-refresh reload-card font-white"></i>
+                                    </li>
+                                    <li><i class="icofont icofont-error close-card font-white"> </i></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-6">
-                        <div class="pt-3 pb-3 pl-0 pr-0 text-center">
-                            <h4 class="m-1">119k</h4>
-                            <p class="m-0">Followers</p>
+                    <div class="card-body">
+                        <div class="activity-timeline todo-timeline">
+                            <div class="d-flex">
+                                <div class="activity-line"></div>
+                                <div class="activity-dot-primary"></div>
+                                <div class="flex-grow-1">
+                                    <p class="mt-0 todo-font"><span class="font-primary">20-04-2022
+                                        </span>Today</p>
+                                    <div class="d-flex mt-0"><img class="img-fluid img-30"
+                                            src="../assets/images/dashboard/default/todo.png" alt="">
+                                        <div class="flex-grow-1"><span class="f-w-600">New Order $2340<i
+                                                    class="fa fa-circle circle-dot-primary pull-right"></i></span>
+                                            <p class="mb-0">Update New Product Pdf And Delivery Product
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="activity-dot-secondary"></div>
+                                <div class="flex-grow-1">
+                                    <p class="mt-0 todo-font"><span class="font-primary">20-04-2022
+                                        </span>Today<span class="badge badge-primary ms-2">New</span></p>
+                                    <span class="f-w-600">James just like your product<i
+                                            class="fa fa-circle circle-dot-secondary pull-right"></i></span>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="activity-dot-primary"></div>
+                                <div class="flex-grow-1">
+                                    <p class="mt-0 todo-font"><span class="font-primary">20-04-2022
+                                        </span>Today</p><span class="f-w-600">Jihan Doe just like your
+                                        product</span>
+                                    <p class="mb-0">Design and style should work making you look good
+                                        and feel good without lot of effort.</p>
+                                </div>
+                            </div>
+                            <div class="d-flex">
+                                <div class="activity-dot-primary"></div>
+                                <div class="flex-grow-1">
+                                    <p class="mt-0 todo-font"><span class="font-primary">20-04-2022
+                                        </span>Today</p><span class="f-w-600">Take Our Client Metting<i
+                                            class="fa fa-circle circle-dot-primary pull-right"></i></span>
+                                    <p class="mb-0">Hosting an effective client meeting.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -566,3 +601,10 @@
     </div>
 
 @endsection
+@push('chart-js')
+    <script src="{{ asset('assets/js/dashboard/default.js') }}"></script>
+    <script src="{{ asset('assets/js/chart/chartist/chartist.js') }}"></script>
+    <script src="{{ asset('assets/js/chart/chartist/chartist-plugin-tooltip.js') }}"></script>
+    <script src="{{ asset('assets/js/chart/apex-chart/apex-chart.js') }}"></script>
+    <script src="{{ asset('assets/js/chart/apex-chart/stock-prices.js') }}"></script>
+@endpush

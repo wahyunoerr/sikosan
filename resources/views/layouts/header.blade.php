@@ -1,193 +1,273 @@
-<div class="header">
-    <div class="header-content clearfix">
-
-        <div class="nav-control">
-            <div class="hamburger">
-                <span class="toggle-icon"><i class="icon-menu"></i></span>
+<div class="page-header">
+    <div class="header-wrapper row m-0">
+        <div class="header-logo-wrapper col-auto p-0">
+            <div class="toggle-sidebar"><i class="status_toggle middle sidebar-toggle" data-feather="grid"> </i>
+            </div>
+            <div class="logo-header-main"><a href="index.html"><img class="img-fluid for-light img-100"
+                        src="../assets/images/logo/logo2.png" alt=""><img class="img-fluid for-dark"
+                        src="../assets/images/logo/logo.png" alt=""></a></div>
+        </div>
+        <div class="left-header col horizontal-wrapper ps-0">
+            <div class="left-menu-header">
+                <ul class="app-list">
+                    <li class="onhover-dropdown">
+                        <div class="app-menu"> <i data-feather="folder-plus"></i></div>
+                        <ul class="onhover-show-div left-dropdown">
+                            <li> <a href="file-manager.html">File Manager</a></li>
+                            <li> <a href="kanban.html"> Kanban board</a></li>
+                            <li> <a href="social-app.html"> Social App</a></li>
+                            <li> <a href="bookmark.html"> Bookmark</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="header-left">
+                    <li class="onhover-dropdown"><span class="f-w-600">Dashboard</span><span><i class="middle"
+                                data-feather="chevron-down"></i></span>
+                        <ul class="onhover-show-div left-dropdown">
+                            <li> <a href="index.html">Default</a></li>
+                            <li> <a href="dashboard-02.html"> Ecommerce</a></li>
+                        </ul>
+                    </li>
+                    <li class="onhover-dropdown"><span class="f-w-600">Application</span><span><i class="middle"
+                                data-feather="chevron-down"></i></span>
+                        <ul class="onhover-show-div left-dropdown">
+                            <li class="flyout-right"><a href="javascript:void(0)">Project</a>
+                                <ul>
+                                    <li> <a href="projects.html">Project List</a></li>
+                                    <li> <a href="projectcreate.html">Project Create</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="file-manager.html">File manager</a></li>
+                            <li><a href="kanban.html">kanban</a></li>
+                            <li class="flyout-right"><a href="javascript:void(0)">Ecommerce</a>
+                                <ul>
+                                    <li> <a href="product.html">Product</a></li>
+                                    <li> <a href="product-page.html">Product Page</a></li>
+                                    <li> <a href="list-products.html">Product List</a></li>
+                                    <li> <a href="payment-details.html">Payment Details</a></li>
+                                    <li> <a href="order-history.html">Order History</a></li>
+                                    <li> <a href="invoice-template.html">Invoice</a></li>
+                                    <li> <a href="cart.html">Cart</a></li>
+                                    <li> <a href="list-wish.html">Wishlist</a></li>
+                                    <li> <a href="checkout.html">Checkout</a></li>
+                                    <li> <a href="pricing.html">Pricing </a></li>
+                                </ul>
+                            </li>
+                            <li class="flyout-right"><a href="javascript:void(0)">Email</a>
+                                <ul>
+                                    <li> <a href="email_inbox.html">Mail Inbox</a></li>
+                                    <li> <a href="email_read.html">Read Mail</a></li>
+                                    <li> <a href="email_compose.html">Compose</a></li>
+                                </ul>
+                            </li>
+                            <li class="flyout-right"><a href="javascript:void(0)">Chat</a>
+                                <ul>
+                                    <li> <a href="chat.html">Chat App</a></li>
+                                    <li> <a href="chat-video.html">Video Chat</a></li>
+                                </ul>
+                            </li>
+                            <li class="flyout-right"><a href="javascript:void(0)">Users</a>
+                                <ul>
+                                    <li> <a href="user-profile.html">User Profile</a></li>
+                                    <li> <a href="edit-profile.html">Users Edit</a></li>
+                                    <li> <a href="user-cards.html">User Cards</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="bookmark.html">Bookmarks</a></li>
+                            <li><a href="contacts.html">Contacts</a></li>
+                            <li><a href="social-app.html">Social App</a></li>
+                        </ul>
+                    </li>
+                    <li class="onhover-dropdown"> <span class="f-w-600">More pages</span><span><i class="middle"
+                                data-feather="chevron-down"></i></span>
+                        <ul class="onhover-show-div left-dropdown">
+                            <li><a href="landing-page.html">Landing Page</a></li>
+                            <li><a href="sample-page.html">Sample Page</a></li>
+                            <li><a href="internationalization.html">Internationalization</a></li>
+                            <li class="flyout-right"><a href="javascript:void(0)">Starter-Kit</a>
+                                <ul>
+                                    <li class="flyout-right"><a href="javascript:void(0)">Color version</a>
+                                        <ul>
+                                            <li> <a href="starter-kit/index.html">Layout Light</a></li>
+                                            <li> <a href="starter-kit/layout-dark.html">Layout Dark</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="flyout-right"><a href="javascript:void(0)">Page Layout</a>
+                                        <ul>
+                                            <li> <a href="starter-kit/boxed.html">Boxed</a></li>
+                                            <li> <a href="starter-kit/layout-rtl.html">RTL</a></li>
+                                        </ul>
+                                    </li>
+                                    <li> <a href="starter-kit/hide-on-scroll.html">Hide Menu On Scroll</a></li>
+                                    <li class="flyout-right"><a href="javascript:void(0)">Footers</a>
+                                        <ul>
+                                            <li> <a href="starter-kit/footer-light.html">Footer Light</a></li>
+                                            <li> <a href="starter-kit/footer-dark.html">Footer Dark </a></li>
+                                            <li> <a href="starter-kit/footer-fixed.html">Footer Fixed</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="header-left">
-            <div class="input-group icons">
-                <div class="input-group-prepend">
-                    <span class="input-group-text bg-transparent border-0 pr-2 pr-sm-3" id="basic-addon1"><i
-                            class="mdi mdi-magnify"></i></span>
-                </div>
-                <input type="search" class="form-control" placeholder="Search Dashboard" aria-label="Search Dashboard">
-                <div class="drop-down animated flipInX d-md-none">
-                    <form action="#">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </form>
-                </div>
-            </div>
-        </div>
-        <div class="header-right">
-            <ul class="clearfix">
-                <li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown">
-                        <i class="mdi mdi-email-outline"></i>
-                        <span class="badge badge-pill gradient-1">3</span>
-                    </a>
-                    <div class="drop-down animated fadeIn dropdown-menu">
-                        <div class="dropdown-content-heading d-flex justify-content-between">
-                            <span class="">3 New Messages</span>
-                            <a href="javascript:void()" class="d-inline-block">
-                                <span class="badge badge-pill gradient-1">3</span>
-                            </a>
-                        </div>
-                        <div class="dropdown-content-body">
-                            <ul>
-                                <li class="notification-unread">
-                                    <a href="javascript:void()">
-                                        <img class="float-left mr-3 avatar-img" src="images/avatar/1.jpg"
-                                            alt="">
-                                        <div class="notification-content">
-                                            <div class="notification-heading">Saiful Islam</div>
-                                            <div class="notification-timestamp">08 Hours ago</div>
-                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li class="notification-unread">
-                                    <a href="javascript:void()">
-                                        <img class="float-left mr-3 avatar-img" src="images/avatar/2.jpg"
-                                            alt="">
-                                        <div class="notification-content">
-                                            <div class="notification-heading">Adam Smith</div>
-                                            <div class="notification-timestamp">08 Hours ago</div>
-                                            <div class="notification-text">Can you do me a favour?</div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void()">
-                                        <img class="float-left mr-3 avatar-img" src="images/avatar/3.jpg"
-                                            alt="">
-                                        <div class="notification-content">
-                                            <div class="notification-heading">Barak Obama</div>
-                                            <div class="notification-timestamp">08 Hours ago</div>
-                                            <div class="notification-text">Hi Teddy, Just wanted to let you ...
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void()">
-                                        <img class="float-left mr-3 avatar-img" src="images/avatar/4.jpg"
-                                            alt="">
-                                        <div class="notification-content">
-                                            <div class="notification-heading">Hilari Clinton</div>
-                                            <div class="notification-timestamp">08 Hours ago</div>
-                                            <div class="notification-text">Hello</div>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-
+        <div class="nav-right col-6 pull-right right-header p-0">
+            <ul class="nav-menus">
+                <li>
+                    <div class="right-header ps-0">
+                        <div class="input-group">
+                            <div class="input-group-prepend"><span class="input-group-text mobile-search"><i
+                                        class="fa fa-search"></i></span></div>
+                            <input class="form-control" type="text" placeholder="Search Here........">
                         </div>
                     </div>
                 </li>
-                <li class="icons dropdown"><a href="javascript:void(0)" data-toggle="dropdown">
-                        <i class="mdi mdi-bell-outline"></i>
-                        <span class="badge badge-pill gradient-2">3</span>
-                    </a>
-                    <div class="drop-down animated fadeIn dropdown-menu dropdown-notfication">
-                        <div class="dropdown-content-heading d-flex justify-content-between">
-                            <span class="">2 New Notifications</span>
-                            <a href="javascript:void()" class="d-inline-block">
-                                <span class="badge badge-pill gradient-2">5</span>
-                            </a>
+                <li class="serchinput">
+                    <div class="serchbox"><i data-feather="search"></i></div>
+                    <div class="form-group search-form">
+                        <input type="text" placeholder="Search here...">
+                    </div>
+                </li>
+                <li>
+                    <div class="mode"><i class="fa fa-moon-o"></i></div>
+                </li>
+                <li class="onhover-dropdown">
+                    <div class="notification-box"><i data-feather="bell"></i></div>
+                    <ul class="notification-dropdown onhover-show-div">
+                        <li><i data-feather="bell"> </i>
+                            <h6 class="f-18 mb-0">Notitications</h6>
+                        </li>
+                        <li>
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0"><i data-feather="truck"></i></div>
+                                <div class="flex-grow-1">
+                                    <p><a href="order-history.html">Delivery processing </a><span class="pull-right">6
+                                            hr</span></p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0"><i data-feather="shopping-cart"></i></div>
+                                <div class="flex-grow-1">
+                                    <p><a href="cart.html">Order Complete</a><span class="pull-right">3
+                                            hr</span></p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0"><i data-feather="file-text"></i></div>
+                                <div class="flex-grow-1">
+                                    <p><a href="invoice-template.html">Tickets Generated</a><span class="pull-right">1
+                                            hr</span></p>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="d-flex align-items-center">
+                                <div class="flex-shrink-0"><i data-feather="send"></i></div>
+                                <div class="flex-grow-1">
+                                    <p><a href="email_inbox.html">Delivery Complete</a><span class="pull-right">45
+                                            min</span></p>
+                                </div>
+                            </div>
+                        </li>
+                        <li><a class="btn btn-primary" href="javascript:void(0)">Check all notification</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="onhover-dropdown">
+                    <div class="message"><i data-feather="message-square"></i></div>
+                    <ul class="message-dropdown onhover-show-div">
+                        <li><i data-feather="message-square"> </i>
+                            <h6 class="f-18 mb-0">Messages</h6>
+                        </li>
+                        <li>
+                            <div class="d-flex align-items-start">
+                                <div class="message-img bg-light-primary"><img src="../assets/images/user/3.jpg"
+                                        alt=""></div>
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1"><a href="email_inbox.html">Emay Walter</a></h5>
+                                    <p>Do you want to go see movie?</p>
+                                </div>
+                                <div class="notification-right"><i data-feather="x"></i></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="d-flex align-items-start">
+                                <div class="message-img bg-light-primary"><img src="../assets/images/user/6.jpg"
+                                        alt=""></div>
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1"><a href="email_inbox.html">Jason Borne</a></h5>
+                                    <p>Thank you for rating us.</p>
+                                </div>
+                                <div class="notification-right"><i data-feather="x"></i></div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="d-flex align-items-start">
+                                <div class="message-img bg-light-primary"><img src="../assets/images/user/10.jpg"
+                                        alt=""></div>
+                                <div class="flex-grow-1">
+                                    <h5 class="mb-1"><a href="email_inbox.html">Sarah Loren</a></h5>
+                                    <p>What`s the project report update?</p>
+                                </div>
+                                <div class="notification-right"><i data-feather="x"></i></div>
+                            </div>
+                        </li>
+                        <li><a class="btn btn-primary" href="email_inbox.html">Check Messages</a></li>
+                    </ul>
+                </li>
+                <li class="maximize"><a href="#!" onclick="javascript:toggleFullScreen()"><i
+                            data-feather="maximize-2"></i></a></li>
+                <li class="language-nav">
+                    <div class="translate_wrapper">
+                        <div class="current_lang">
+                            <div class="lang"><i data-feather="globe"></i></div>
                         </div>
-                        <div class="dropdown-content-body">
-                            <ul>
-                                <li>
-                                    <a href="javascript:void()">
-                                        <span class="mr-3 avatar-icon bg-success-lighten-2"><i
-                                                class="icon-present"></i></span>
-                                        <div class="notification-content">
-                                            <h6 class="notification-heading">Events near you</h6>
-                                            <span class="notification-text">Within next 5 days</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void()">
-                                        <span class="mr-3 avatar-icon bg-danger-lighten-2"><i
-                                                class="icon-present"></i></span>
-                                        <div class="notification-content">
-                                            <h6 class="notification-heading">Event Started</h6>
-                                            <span class="notification-text">One hour ago</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void()">
-                                        <span class="mr-3 avatar-icon bg-success-lighten-2"><i
-                                                class="icon-present"></i></span>
-                                        <div class="notification-content">
-                                            <h6 class="notification-heading">Event Ended Successfully</h6>
-                                            <span class="notification-text">One hour ago</span>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void()">
-                                        <span class="mr-3 avatar-icon bg-danger-lighten-2"><i
-                                                class="icon-present"></i></span>
-                                        <div class="notification-content">
-                                            <h6 class="notification-heading">Events to Join</h6>
-                                            <span class="notification-text">After two days</span>
-                                        </div>
-                                    </a>
-                                </li>
-                            </ul>
-
+                        <div class="more_lang">
+                            <div class="lang selected" data-value="en"><i class="flag-icon flag-icon-us"></i><span
+                                    class="lang-txt">English<span>
+                                        (US)</span></span></div>
+                            <div class="lang" data-value="de"><i class="flag-icon flag-icon-de"></i><span
+                                    class="lang-txt">Deutsch</span></div>
+                            <div class="lang" data-value="es"><i class="flag-icon flag-icon-es"></i><span
+                                    class="lang-txt">Espa&ntilde;ol</span></div>
+                            <div class="lang" data-value="fr"><i class="flag-icon flag-icon-fr"></i><span
+                                    class="lang-txt">Fran&ccedil;ais</span></div>
+                            <div class="lang" data-value="pt"><i class="flag-icon flag-icon-pt"></i><span
+                                    class="lang-txt">Portugu&ecirc;s<span> (BR)</span></span></div>
+                            <div class="lang" data-value="cn"><i class="flag-icon flag-icon-cn"></i><span
+                                    class="lang-txt">&#x7B80;&#x4F53;&#x4E2D;&#x6587;</span></div>
+                            <div class="lang" data-value="ae"><i class="flag-icon flag-icon-ae"></i><span
+                                    class="lang-txt">&#x644;&#x639;&#x631;&#x628;&#x64A;&#x629; <span>
+                                        (ae)</span></span></div>
                         </div>
                     </div>
                 </li>
-                <li class="icons dropdown d-none d-md-flex">
-                    <a href="javascript:void(0)" class="log-user" data-toggle="dropdown">
-                        <span>English</span> <i class="fa fa-angle-down f-s-14" aria-hidden="true"></i>
-                    </a>
-                    <div class="drop-down dropdown-language animated fadeIn  dropdown-menu">
-                        <div class="dropdown-content-body">
-                            <ul>
-                                <li><a href="javascript:void()">English</a></li>
-                                <li><a href="javascript:void()">Dutch</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="icons dropdown">
-                    <div class="user-img c-pointer position-relative" data-toggle="dropdown">
-                        <span class="activity active"></span>
-                        <img src="images/user/1.png" height="40" width="40" alt="">
-                    </div>
-                    <div class="drop-down dropdown-profile animated fadeIn dropdown-menu">
-                        <div class="dropdown-content-body">
-                            <ul>
-                                <li>
-                                    <a href="app-profile.html"><i class="icon-user"></i>
-                                        <span>Profile</span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void()">
-                                        <i class="icon-envelope-open"></i> <span>Inbox</span>
-                                        <div class="badge gradient-3 badge-pill gradient-1">3</div>
-                                    </a>
-                                </li>
-
-                                <hr class="my-2">
-                                <li>
-                                    <a href="page-lock.html"><i class="icon-lock"></i> <span>Lock
-                                            Screen</span></a>
-                                </li>
-                                <li><a href="page-login.html"><i class="icon-key"></i> <span>Logout</span></a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                <li class="profile-nav onhover-dropdown">
+                    <div class="account-user"><i data-feather="user"></i></div>
+                    <ul class="profile-dropdown onhover-show-div">
+                        <li><a href="user-profile.html"><i data-feather="user"></i><span>Account</span></a>
+                        </li>
+                        <li><a href="email_inbox.html"><i data-feather="mail"></i><span>Inbox</span></a></li>
+                        <li><a href="edit-profile.html"><i data-feather="settings"></i><span>Settings</span></a></li>
+                        <li><a href="login.html"><i data-feather="log-in"> </i><span>Log in</span></a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
+        <script class="result-template" type="text/x-handlebars-template">
+    <div class="ProfileCard u-cf">
+    <div class="ProfileCard-avatar"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-airplay m-0"><path d="M5 17H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-1"></path><polygon points="12 15 17 21 7 21 12 15"></polygon></svg></div>
+    <div class="ProfileCard-details">
+    <div class="ProfileCard-realName">{{ Auth::user()->name }}</div>
+    </div>
+    </div>
+  </script>
+        <script class="empty-template" type="text/x-handlebars-template"><div class="EmptyMessage">Your search turned up 0 results. This most likely means the backend is down, yikes!</div></script>
     </div>
 </div>

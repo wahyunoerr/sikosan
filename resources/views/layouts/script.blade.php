@@ -1,27 +1,36 @@
-<script src="{{ asset('assets/plugins/common/common.min.js') }}"></script>
-<script src="{{ asset('assets/js/custom.min.js') }}"></script>
-<script src="{{ asset('assets/js/settings.js') }}"></script>
-<script src="{{ asset('assets/js/gleek.js') }}"></script>
-<script src="{{ asset('assets/js/styleSwitcher.js') }}"></script>
-
-<!-- Chartjs -->
-<script src="{{ asset('assets/plugins/chart.js/Chart.bundle.min.js') }}"></script>
-<!-- Circle progress -->
-<script src="{{ asset('assets/plugins/circle-progress/circle-progress.min.js') }}"></script>
-<!-- Datamap -->
-<script src="{{ asset('assets/plugins/d3v3/index.js') }}"></script>
-<script src="{{ asset('assets/plugins/topojson/topojson.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datamaps/datamaps.world.min.js') }}"></script>
-<!-- Morrisjs -->
-<script src="{{ asset('assets/plugins/raphael/raphael.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/morris/morris.min.js') }}"></script>
-<!-- Pignose Calender -->
-<script src="{{ asset('assets/plugins/moment/moment.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/pg-calendar/js/pignose.calendar.min.js') }}"></script>
-<!-- ChartistJS -->
-<script src="{{ asset('assets/plugins/chartist/js/chartist.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js') }}"></script>
-
-
-
-<script src="{{ asset('assets/js/dashboard/dashboard-1.js') }}"></script>
+ <!-- latest jquery-->
+ <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
+ <!-- Bootstrap js-->
+ <script src="{{ asset('assets/js/bootstrap/bootstrap.bundle.min.js') }}"></script>
+ @stack('datatable-script')
+ <!-- feather icon js-->
+ <script src="{{ asset('assets/js/icons/feather-icon/feather.min.js') }}"></script>
+ <script src="{{ asset('assets/js/icons/feather-icon/feather-icon.js') }}"></script>
+ <!-- scrollbar js-->
+ <script src="{{ asset('assets/js/scrollbar/simplebar.js') }}"></script>
+ <script src="{{ asset('assets/js/scrollbar/custom.js') }}"></script>
+ <!-- Sidebar jquery-->
+ <script src="{{ asset('assets/js/config.js') }}"></script>
+ <script src="{{ asset('assets/js/sidebar-menu.js') }}"></script>
+ @stack('chart-js')
+ <script src="{{ asset('assets/js/prism/prism.min.js') }}"></script>
+ <script src="{{ asset('assets/js/clipboard/clipboard.min.js') }}"></script>
+ <script src="{{ asset('assets/js/custom-card/custom-card.js') }}"></script>
+ <script src="{{ asset('assets/js/notify/bootstrap-notify.min.js') }}"></script>
+ <script src="{{ asset('assets/js/vector-map/jquery-jvectormap-2.0.2.min.js') }}"></script>
+ <script src="{{ asset('assets/js/vector-map/map/jquery-jvectormap-world-mill-en.js') }}"></script>
+ <script src="{{ asset('assets/js/vector-map/map/jquery-jvectormap-us-aea-en.js') }}"></script>
+ <script src="{{ asset('assets/js/vector-map/map/jquery-jvectormap-uk-mill-en.js') }}"></script>
+ <script src="{{ asset('assets/js/vector-map/map/jquery-jvectormap-au-mill.js') }}"></script>
+ <script src="{{ asset('assets/js/vector-map/map/jquery-jvectormap-chicago-mill-en.js') }}"></script>
+ <script src="{{ asset('assets/js/vector-map/map/jquery-jvectormap-in-mill.js') }}"></script>
+ <script src="{{ asset('assets/js/vector-map/map/jquery-jvectormap-asia-mill.j') }}s"></script>
+ <script src="{{ asset('assets/js/notify/index.js') }}"></script>
+ <script src="{{ asset('assets/js/typeahead/handlebars.js') }}"></script>
+ <script src="{{ asset('assets/js/typeahead/typeahead.bundle.js') }}"></script>
+ <script src="{{ asset('assets/js/typeahead/typeahead.custom.js') }}"></script>
+ <script src="{{ asset('assets/js/typeahead-search/handlebars.js') }}"></script>
+ <script src="{{ asset('assets/js/typeahead-search/typeahead-custom.js') }}"></script>
+ <!-- Template js-->
+ <script src="{{ asset('assets/js/script.js') }}"></script>
+ <!-- login js-->

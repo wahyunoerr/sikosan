@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\KamarController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,11 @@ Auth::routes();
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::controller(KamarController::class)->group(function () {
+        Route::prefix('kamar')->group(function () {
+            Route::get('/', 'index');
+            Route::post('/orders', 'store');
+        });
+    });
 });
