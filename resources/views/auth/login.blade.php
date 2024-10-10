@@ -39,19 +39,39 @@
                 <div class="login-card">
                     <div>
                         <div class="login-main">
-                            <form class="theme-form">
+                            <form class="theme-form" action="{{ route('login') }}" method="POST">
+                                @csrf
                                 <h4 class="text-center">Login Akun</h4>
                                 <p class="text-center">Masukkan Email dan Password anda</p>
                                 <div class="form-group">
-                                    <label class="col-form-label">Email Address</label>
-                                    <input class="form-control" type="email" required=""
-                                        placeholder="Test@gmail.com">
+                                    <label
+                                        class="col-form-label @error('email')
+                                        is-invalid
+                                    @enderror">Email
+                                        Address</label>
+                                    <input class="form-control" name="email" type="email" required
+                                        value="{{ old('email') }}" placeholder="Test@gmail.com" autofocus>
+
+                                    @error('email')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label">Password</label>
                                     <div class="form-input position-relative">
-                                        <input class="form-control" type="password" name="login[password]"
-                                            required="" placeholder="*********">
+                                        <input
+                                            class="form-control @error('password')
+                                            is-invalid
+                                        @enderror"
+                                            type="password" name="password" required placeholder="*********"
+                                            autocomplete="current-password">
+                                        @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                         <div class="show-hide"><span class="show"> </span></div>
                                     </div>
                                 </div>
