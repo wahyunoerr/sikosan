@@ -7,62 +7,65 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Sikosan - Login</title>
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/favicon.png') }}">
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/font-awesome.css') }}">
+    <!-- ico-font-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/icofont.css') }}">
+    <!-- Themify icon-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/themify.css') }}">
+    <!-- Flag icon-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/flag-icon.css') }}">
+    <!-- Feather icon-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/feather-icon.css') }}">
+    <!-- Bootstrap css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/bootstrap.css') }}">
+    <!-- App css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+    <link id="color" rel="stylesheet" href="{{ asset('assets/css/color-1.css') }}" media="screen">
+    <!-- Responsive css-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
 </head>
 
 <body class="h-100">
 
     @include('layouts.preloader')
 
-    <div class="login-form-bg h-100">
-        <div class="container h-100">
-            <div class="row justify-content-center h-100">
-                <div class="col-xl-6">
-                    <div class="form-input-content">
-                        <div class="card login-form mb-0">
-                            <div class="card-body pt-5">
-                                <a class="text-center">
-                                    <h4>SiKosan</h4>
-                                </a>
-
-                                <form class="mt-5
-                                    mb-5 login-input" method="POST"
-                                    action="{{ route('login') }}">
-                                    @csrf
-                                    <div class="form-group">
-                                        <input type="email"
-                                            class="form-control @error('email')
-                                            is-invalid
-                                        @enderror"
-                                            name="email" value="{{ old('email') }}" placeholder="Email" required
-                                            autocomplete="email" autofocus>
-
-                                        @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
+    <div class="container-fluid p-0">
+        <div class="row m-0">
+            <div class="col-12 p-0">
+                <div class="login-card">
+                    <div>
+                        <div class="login-main">
+                            <form class="theme-form">
+                                <h4 class="text-center">Login Akun</h4>
+                                <p class="text-center">Masukkan Email dan Password anda</p>
+                                <div class="form-group">
+                                    <label class="col-form-label">Email Address</label>
+                                    <input class="form-control" type="email" required=""
+                                        placeholder="Test@gmail.com">
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-form-label">Password</label>
+                                    <div class="form-input position-relative">
+                                        <input class="form-control" type="password" name="login[password]"
+                                            required="" placeholder="*********">
+                                        <div class="show-hide"><span class="show"> </span></div>
                                     </div>
-                                    <div class="form-group" x-data="{ show: false }" style="position: relative;">
-                                        <input :type="show ? 'text' : 'password'"
-                                            class="form-control @error('password')
-                                            is-invalid
-                                        @enderror"
-                                            placeholder="Password" name="password" required
-                                            autocomplete="current-password">
-                                        <button class="btn btn-outline-secoondary"
-                                            style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); padding: 0 10px; height: 100%;"
-                                            type="button" @click="show = !show">
-                                            <span x-text="show ? 'Hide' : 'Show'"></span>
-                                        </button>
+                                </div>
+                                <div class="form-group mb-0">
+                                    <div class="checkbox p-0">
+                                        <input id="checkbox1" type="checkbox">
+                                        <div class="text-end mt-3">
+                                            <button class="btn btn-primary btn-block w-100" type="submit">Sign in
+                                            </button>
+                                        </div>
                                     </div>
-                                    <button class="btn login-form__btn submit w-100" type="submit">Sign In</button>
-                                </form>
-                                <p class="mt-5
-                                        login-form__footer">Dont have
-                                    account? <a href="page-register.html" class="text-primary">Sign Up</a> now</p>
-                            </div>
+                                    <p class="mt-4 mb-0 text-center">Don't have account?<a class="ms-2"
+                                            href="sign-up.html">Create Account</a></p>
+                            </form>
                         </div>
                     </div>
                 </div>
