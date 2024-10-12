@@ -12,6 +12,8 @@
  <!-- Sidebar jquery-->
  <script src="{{ asset('assets/js/config.js') }}"></script>
  <script src="{{ asset('assets/js/sidebar-menu.js') }}"></script>
+ <script src="{{ asset('assets/js/tooltip-init.js') }}"></script>
+ @stack('modal-script')
  @stack('chart-js')
  <script src="{{ asset('assets/js/prism/prism.min.js') }}"></script>
  <script src="{{ asset('assets/js/clipboard/clipboard.min.js') }}"></script>
@@ -33,4 +35,5 @@
  <script src="{{ asset('assets/js/typeahead-search/typeahead-custom.js') }}"></script>
  <!-- Template js-->
  <script src="{{ asset('assets/js/script.js') }}"></script>
+ <script src="{{ asset('assets/js/theme-customizer/customizer.js') }}"></script>
  <!-- login js-->
