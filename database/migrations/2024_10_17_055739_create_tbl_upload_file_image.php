@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tbl_kamar', function (Blueprint $table) {
+        Schema::create('tbl_upload_file_image', function (Blueprint $table) {
             $table->id();
-            $table->string('nomor', 100);
-            $table->string('harga', 100);
-            $table->enum('lantai', ['Lantai 1', 'Lantai 2', 'Lantai 3']);
-            $table->enum('status', ['Sudah Dihuni', 'Belum Dihuni']);
-            $table->string('fasilitas', 100);
+            $table->string('nameImage', 100);
+            $table->unsignedBigInteger('kamar_id');
             $table->timestamps();
+
+            $table->foreign('kamar_id')->references('id')->on('tbl_kamar')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tb_kamar');
+        Schema::dropIfExists('tbl_upload_file_image');
     }
 };

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kamar;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KamarController extends Controller
 {
@@ -12,7 +12,8 @@ class KamarController extends Controller
      */
     public function index()
     {
-        return view('pages.kamar.index');
+        $data = DB::table('tbl_kamar')->get();
+        return view('pages.kamar.index', compact('data'));
     }
 
     /**
@@ -20,7 +21,7 @@ class KamarController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.kamar.create');
     }
 
     /**
@@ -28,13 +29,50 @@ class KamarController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validateKamar = $request->validate([
+            'nomorKamar' => 'required',
+            'hargaKamar' => 'required',
+            'lantaiKamar' => 'required|in:Lantai 1,Lantai 2,Lantai3',
+            'status' => 'required|in:Sudah Dihuni,Belum Dihuni',
+            'fasilitas' => 'required',
+            'fotoKamar' => 'required|mimes:jpg,jpeg',
+        ]);
+
+
+        if ($request->hasFile('fotoKamar')) {
+            $files = $request->file('fotoKamar');
+
+            foreach ($files as $i) {
+                if ($i->isValid()) {
+                    $imagePath = $i->store('upload/image/', 'public');
+                    $imageName = time() . $i->getClientOriginalName() . $imagePath;
+                }
+            }
+        }
+
+
+
+        $kamar = DB::table('tb_kamar')->insert([
+            'nomor' => $validateKamar['nomorKamar'],
+            'harga' => $validateKamar['hargaKamar'],
+            'lantai' => $validateKamar['lantaiKamar'],
+            'status' => $validateKamar['statusKamar'],
+            'fasilitas' => $validateKamar['fasilitas'],
+        ]);
+
+        DB::table('tbl_upload_file_image')->insert([
+            'nameImage' => $imageName,
+            'kamar_id' => $kamar
+
+        ]);
+
+        dd($request->all());
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Kamar $kamar)
+    public function show(string $id)
     {
         //
     }
@@ -42,7 +80,7 @@ class KamarController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Kamar $kamar)
+    public function edit(string $id)
     {
         //
     }
@@ -50,7 +88,7 @@ class KamarController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Kamar $kamar)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -58,7 +96,7 @@ class KamarController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Kamar $kamar)
+    public function destroy(string $id)
     {
         //
     }

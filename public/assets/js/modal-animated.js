@@ -8,11 +8,11 @@ function testAnim(x) {
 var modal_animate_custom = {
     init: function () {
         $("#myModal").on("show.bs.modal", function (e) {
-            var anim = "rollIn";
+            var anim = $("#entrance").val();
             testAnim(anim);
         });
         $("#myModal").on("hide.bs.modal", function (e) {
-            var anim = "rollOut";
+            var anim = $("#exit").val();
             testAnim(anim);
         });
         // $("a").tooltip();

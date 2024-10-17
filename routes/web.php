@@ -27,7 +27,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::controller(KamarController::class)->group(function () {
         Route::prefix('kamar')->group(function () {
             Route::get('/', 'index');
-            Route::post('/orders', 'store');
+            Route::get('/add', 'create')->name('kamar.add');
+            Route::post('/save', 'store')->name('kamar.save');
         });
     });
 });
