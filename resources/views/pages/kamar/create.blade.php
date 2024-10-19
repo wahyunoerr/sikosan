@@ -24,21 +24,20 @@
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label>Berada di Lantai</label>
-                                <select class="form-select">
+                                <select name="lantaiKamar" class="form-select">
                                     <option value="">--Pilih--</option>
-                                    <option>Lantai 1</option>
-                                    <option>Lantai 2</option>
-                                    <option>Lantai 3</option>
+                                    <option value="Lantai 1">Lantai 1</option>
+                                    <option value="Lantai 2">Lantai 2</option>
+                                    <option value="Lantai 3">Lantai 3</option>
                                 </select>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label>Status Kamar</label>
-                                <select class="form-select">
-                                    <option value="">--Pilih--</option>
-                                    <option>Belum Dihuni</option>
-                                    <option>Sudah Dihuni</option>
+                                <select name="status" class="form-select">
+                                    <option value="Belum Dihuni" selected>Belum Dihuni</option>
+                                    <option value="Sudah Dihuni">Sudah Dihuni</option>
                                 </select>
                             </div>
                         </div>
@@ -47,7 +46,7 @@
                         <div class="col">
                             <div class="mb-3">
                                 <label>Fasilitas Kamar</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+                                <textarea class="form-control" id="exampleFormControlTextarea4" rows="3" name="fasilitas"></textarea>
                             </div>
                         </div>
                     </div>
@@ -55,7 +54,7 @@
                         <div class="col">
                             <div class="mb-3">
                                 <label>Foto Kamar</label>
-                                <input type="file" class="form-control" multiple>
+                                <input type="file" class="form-control" name="fotoKamar[]" multiple>
                             </div>
                         </div>
                     </div>

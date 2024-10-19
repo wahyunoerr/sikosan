@@ -35,38 +35,36 @@ class KamarController extends Controller
             'lantaiKamar' => 'required|in:Lantai 1,Lantai 2,Lantai3',
             'status' => 'required|in:Sudah Dihuni,Belum Dihuni',
             'fasilitas' => 'required',
-            'fotoKamar' => 'required|mimes:jpg,jpeg',
+            'fotoKamar.*' => 'required|mimes:jpg,jpeg',
+        ]);
+
+        $kamarId = DB::table('tbl_kamar')->insertGetId([
+            'nomor'     => $validateKamar['nomorKamar'],
+            'harga'     => $validateKamar['hargaKamar'],
+            'lantai'    => $validateKamar['lantaiKamar'],
+            'status'    => $validateKamar['status'],
+            'fasilitas' => $validateKamar['fasilitas'],
+            'created_at' => now(),
+            'updated_at' => now()
         ]);
 
 
-        if ($request->hasFile('fotoKamar')) {
-            $files = $request->file('fotoKamar');
+        if ($request->hasFile('fotoKamar[]')) {
+            foreach ($request->file('fotoKamar[]') as $file) {
+                if ($file->isValid()) {
+                    $imageName = time() . '_' . $file->getClientOriginalName();
+                    $file->store('/upload/image/', $imageName, 'public');
 
-            foreach ($files as $i) {
-                if ($i->isValid()) {
-                    $imagePath = $i->store('upload/image/', 'public');
-                    $imageName = time() . $i->getClientOriginalName() . $imagePath;
+                    DB::table('tbl_upload_file_image')->insert([
+                        'nameImage' => $imageName,
+                        'kamar_id'  => $kamarId,
+                    ]);
                 }
             }
         }
 
-
-
-        $kamar = DB::table('tb_kamar')->insert([
-            'nomor' => $validateKamar['nomorKamar'],
-            'harga' => $validateKamar['hargaKamar'],
-            'lantai' => $validateKamar['lantaiKamar'],
-            'status' => $validateKamar['statusKamar'],
-            'fasilitas' => $validateKamar['fasilitas'],
-        ]);
-
-        DB::table('tbl_upload_file_image')->insert([
-            'nameImage' => $imageName,
-            'kamar_id' => $kamar
-
-        ]);
-
         dd($request->all());
+        return redirect('kamar');
     }
 
     /**
