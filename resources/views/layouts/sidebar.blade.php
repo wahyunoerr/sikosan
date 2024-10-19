@@ -1,7 +1,7 @@
 <div class="sidebar-wrapper">
     <div>
-        <div class="logo-wrapper"><a href="index.html"><img class="img-fluid for-light" src="../assets/images/logo/logo.png"
-                    alt=""></a>
+        <div class="logo-wrapper"><a href="index.html"><img class="img-fluid for-light"
+                    src="{{ asset('assets/images/logo/logo.png') }}" alt=""></a>
             <div class="back-btn"><i data-feather="grid"></i></div>
             <div class="toggle-sidebar icon-box-sidebar"><i class="status_toggle middle sidebar-toggle"
                     data-feather="grid"> </i></div>
@@ -28,8 +28,7 @@
                                 data-feather="airplay"></i><span>Master Data</span></a>
                         <ul class="sidebar-submenu">
                             <li><a href="/kamar">Kamar</a></li>
-                            <li><a href="#">Lokasi Kos</a></li>
-                            <li><a href="#">Info Rekening</a></li>
+                            <li><a href="/rekening">Info Rekening</a></li>
                             <li><a href="#">Pengguna</a></li>
                         </ul>
                     </li>

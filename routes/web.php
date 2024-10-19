@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\KamarController;
+use App\Http\Controllers\RekeningController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +29,22 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::prefix('kamar')->group(function () {
             Route::get('/', 'index');
             Route::get('/add', 'create')->name('kamar.add');
+            Route::get('/edit/{id}', 'edit')->name('kamar.edit');
             Route::post('/save', 'store')->name('kamar.save');
+            Route::post('/update/{id}', 'update')->name('kamar.update');
+            Route::get('/foto/{id}', 'showImage')->name('kamar.image');
+            Route::delete('/delete/{id}', 'destroy')->name('kamar.delete');
+        });
+    });
+
+    Route::controller(RekeningController::class)->group(function () {
+        Route::prefix('rekening')->group(function () {
+            Route::get('/', 'index');
+            Route::get('/edit/{id}', 'edit')->name('rekening.edit');
+            Route::post('/save', 'store')->name('rekening.save');
+            Route::post('/update/{id}', 'update')->name('rekening.update');
+            Route::post('/save', 'store')->name('rekening.save');
+            Route::delete('/delete/{id}', 'destroy')->name('rekening.delete');
         });
     });
 });

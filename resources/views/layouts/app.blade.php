@@ -6,6 +6,7 @@
 </head>
 
 <body {{ request()->url() === route('home') ? 'onload = startTime()' : '' }}>
+    @include('sweetalert::alert')
     <!-- tap on top starts-->
     <div class="tap-top"><i data-feather="chevrons-up"></i></div>
     <!-- tap on tap ends-->

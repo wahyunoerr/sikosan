@@ -31,22 +31,26 @@
                                     <td>{{ $d->harga }}</td>
                                     <td>{{ $d->lantai }}</td>
                                     <td>
-                                        @if ($d->status == 'tersedia')
-                                            <span class="badge rounded-pill badge-light-success">Tersedia</span>
-                                        @elseif ($d->status == 'tidak tersedia')
-                                            <span class="badge rounded-pill badge-light-secondary">Tidak Tersedia</span>
+                                        @if ($d->status == 'Sudah Dihuni')
+                                            <span class="badge rounded-pill badge-light-success">Sudah Dihuni</span>
+                                        @elseif ($d->status == 'Belum Dihuni')
+                                            <span class="badge rounded-pill badge-light-secondary">Belum Dihuni</span>
                                         @else
                                             <span class="badge rounded-pill badge-light-warning">Tidak terdefenisi</span>
                                         @endif
                                     </td>
                                     <td>
-                                        <li class="show"><a href="#"><i class="icon-file"></i></a></li>
+                                        <a href="{{ route('kamar.image', $d->id) }}"
+                                            class="btn btn-pill btn-primary btn-air-primary">Lihat <i
+                                                class="icofont icofont-file-image"></i></a>
                                     </td>
                                     <td>{{ $d->fasilitas }}</td>
                                     <td>
                                         <ul class="action">
-                                            <li class="edit"> <a href="#"><i class="icon-pencil-alt"></i></a></li>
-                                            <li class="delete"><a href="#"><i class="icon-trash"></i></a></li>
+                                            <li class="edit"> <a href="{{ route('kamar.edit', $d->id) }}"><i
+                                                        class="icon-pencil-alt"></i></a></li>
+                                            <li class="delete"><a href="{{ route('kamar.delete', $d->id) }}"
+                                                    data-confirm-delete="true"><i class="icon-trash"></i></a></li>
                                         </ul>
                                     </td>
                                 </tr>
@@ -58,9 +62,6 @@
         </div>
     </div>
 @endsection
-@push('modal-script')
-    <script src="{{ asset('assets/js/modal-animated.js') }}"></script>
-@endpush
 @push('datatable-script')
     <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
