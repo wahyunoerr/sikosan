@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\KamarController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\RekeningController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -16,8 +17,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::controller(LandingController::class)->group(function () {
+    Route::prefix('/')->group(function () {
+        Route::get('/', 'index')->name('landing.index');
+    });
 });
 
 Auth::routes();
