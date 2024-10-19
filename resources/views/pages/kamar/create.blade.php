@@ -11,7 +11,7 @@
                             <div class="mb-3">
                                 <label>Nomor Kamar</label>
                                 <input class="form-control @error('nomorkamar') is-invalid @enderror" type="number"
-                                    placeholder="Nomor Kamar" name="nomorKamar">
+                                    placeholder="Nomor Kamar" name="nomorKamar" value="{{ old('nomorKamar') }}">
 
                                 @error('nomorKamar')
                                     <div class="invalid-feedback">
@@ -24,7 +24,7 @@
                             <div class="mb-3">
                                 <label>Harga Kamar</label>
                                 <input class="form-control @error('hargaKamar') is-invalid @enderror" type="number"
-                                    placeholder="Harga Kamar" name="hargaKamar">
+                                    placeholder="Harga Kamar" name="hargaKamar" value="{{ old('hargaKamar') }}">
 
                                 @error('hargaKamar')
                                     <div class="invalid-feedback">
@@ -39,10 +39,13 @@
                             <div class="mb-3">
                                 <label>Berada di Lantai</label>
                                 <select name="lantaiKamar" class="form-select @error('lantaiKamar') is-invalid @enderror">
-                                    <option value="">--Pilih--</option>
-                                    <option value="Lantai 1">Lantai 1</option>
-                                    <option value="Lantai 2">Lantai 2</option>
-                                    <option value="Lantai 3">Lantai 3</option>
+                                    <option selected disabled>--Pilih--</option>
+                                    <option value="Lantai 1" {{ old('lantaiKamar') == 'Lantai 1' ? 'selected' : '' }}>Lantai
+                                        1</option>
+                                    <option value="Lantai 2" {{ old('lantaiKamar') == 'Lantai 2' ? 'selected' : '' }}>Lantai
+                                        2</option>
+                                    <option value="Lantai 3" {{ old('lantaiKamar') == 'Lantai 3' ? 'selected' : '' }}>Lantai
+                                        3</option>
                                 </select>
 
                                 @error('lantaiKamar')
@@ -56,8 +59,13 @@
                             <div class="mb-3">
                                 <label>Status Kamar</label>
                                 <select name="status" class="form-select @error('status') is-invalid @enderror">
-                                    <option value="Belum Dihuni" selected>Belum Dihuni</option>
-                                    <option value="Sudah Dihuni">Sudah Dihuni</option>
+                                    <option selected disabled>---Plih---</option>
+                                    <option value="Belum Dihuni" {{ old('status') == 'Belum Dihuni' ? 'selected' : '' }}>
+                                        Belum
+                                        Dihuni</option>
+                                    <option value="Sudah Dihuni" {{ old('status') == 'Sudah Dihuni' ? 'selected' : '' }}>
+                                        Sudah
+                                        Dihuni</option>
                                 </select>
 
                                 @error('status')
@@ -73,7 +81,7 @@
                             <div class="mb-3">
                                 <label>Fasilitas Kamar</label>
                                 <textarea class="form-control @error('fasilitas') is-invalid @enderror" id="exampleFormControlTextarea4" rows="3"
-                                    name="fasilitas"></textarea>
+                                    name="fasilitas">{{ old('fasilitas') }}</textarea>
 
                                 @error('fasilitas')
                                     <div class="invalid-feedback">

@@ -32,7 +32,7 @@ class KamarController extends Controller
         $validateKamar = $request->validate([
             'nomorKamar' => 'required',
             'hargaKamar' => 'required',
-            'lantaiKamar' => 'required|in:Lantai 1,Lantai 2,Lantai3',
+            'lantaiKamar' => 'required|in:Lantai 1,Lantai 2,Lantai 3',
             'status' => 'required|in:Sudah Dihuni,Belum Dihuni',
             'fasilitas' => 'required',
             'fotoKamar' => 'required|array',
@@ -64,6 +64,7 @@ class KamarController extends Controller
             }
         }
 
+        // dd($request->all());
         return redirect('kamar')->with('success', 'Data kamar berhasil ditambahkan');
     }
 
