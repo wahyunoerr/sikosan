@@ -10,13 +10,27 @@
                         <div class="col-6">
                             <div class="mb-3">
                                 <label>Nomor Kamar</label>
-                                <input class="form-control" type="number" placeholder="Nomor Kamar" name="nomorKamar">
+                                <input class="form-control @error('nomorkamar') is-invalid @enderror" type="number"
+                                    placeholder="Nomor Kamar" name="nomorKamar">
+
+                                @error('nomorKamar')
+                                    <div class="invalid-feedback">
+                                        <strong>{{ $message }}</strong>
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="mb-3">
                                 <label>Harga Kamar</label>
-                                <input class="form-control" type="number" placeholder="Harga Kamar" name="hargaKamar">
+                                <input class="form-control @error('hargaKamar') is-invalid @enderror" type="number"
+                                    placeholder="Harga Kamar" name="hargaKamar">
+
+                                @error('hargaKamar')
+                                    <div class="invalid-feedback">
+                                        <strong>{{ $message }}</strong>
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -24,21 +38,33 @@
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label>Berada di Lantai</label>
-                                <select name="lantaiKamar" class="form-select">
+                                <select name="lantaiKamar" class="form-select @error('lantaiKamar') is-invalid @enderror">
                                     <option value="">--Pilih--</option>
                                     <option value="Lantai 1">Lantai 1</option>
                                     <option value="Lantai 2">Lantai 2</option>
                                     <option value="Lantai 3">Lantai 3</option>
                                 </select>
+
+                                @error('lantaiKamar')
+                                    <div class="invalid-feedback">
+                                        <strong>{{ $message }}</strong>
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label>Status Kamar</label>
-                                <select name="status" class="form-select">
+                                <select name="status" class="form-select @error('status') is-invalid @enderror">
                                     <option value="Belum Dihuni" selected>Belum Dihuni</option>
                                     <option value="Sudah Dihuni">Sudah Dihuni</option>
                                 </select>
+
+                                @error('status')
+                                    <div class="invalid-feedback">
+                                        <strong>{{ $message }}</strong>
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -46,7 +72,14 @@
                         <div class="col">
                             <div class="mb-3">
                                 <label>Fasilitas Kamar</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea4" rows="3" name="fasilitas"></textarea>
+                                <textarea class="form-control @error('fasilitas') is-invalid @enderror" id="exampleFormControlTextarea4" rows="3"
+                                    name="fasilitas"></textarea>
+
+                                @error('fasilitas')
+                                    <div class="invalid-feedback">
+                                        <strong>{{ $message }}</strong>
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -54,7 +87,14 @@
                         <div class="col">
                             <div class="mb-3">
                                 <label>Foto Kamar</label>
-                                <input type="file" class="form-control" name="fotoKamar[]" multiple>
+                                <input type="file" class="form-control @error('fotoKamar[]') is-invalid @enderror"
+                                    name="fotoKamar[]" multiple>
+
+                                @error('fotoKamar[]')
+                                    <div class="invalid-feedback">
+                                        <strong>{{ $message }}</strong>
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                     </div>

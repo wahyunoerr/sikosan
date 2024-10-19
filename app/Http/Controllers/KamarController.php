@@ -35,6 +35,7 @@ class KamarController extends Controller
             'lantaiKamar' => 'required|in:Lantai 1,Lantai 2,Lantai3',
             'status' => 'required|in:Sudah Dihuni,Belum Dihuni',
             'fasilitas' => 'required',
+            'fotoKamar' => 'required|array',
             'fotoKamar.*' => 'required|mimes:jpg,jpeg',
         ]);
 
@@ -49,11 +50,11 @@ class KamarController extends Controller
         ]);
 
 
-        if ($request->hasFile('fotoKamar[]')) {
-            foreach ($request->file('fotoKamar[]') as $file) {
+        if ($request->hasFile('fotoKamar')) {
+            foreach ($request->file('fotoKamar') as $file) {
                 if ($file->isValid()) {
                     $imageName = time() . '_' . $file->getClientOriginalName();
-                    $file->store('/upload/image/', $imageName, 'public');
+                    $file->storeAs('uploads/image/', $imageName, 'public');
 
                     DB::table('tbl_upload_file_image')->insert([
                         'nameImage' => $imageName,
@@ -63,8 +64,7 @@ class KamarController extends Controller
             }
         }
 
-        dd($request->all());
-        return redirect('kamar');
+        return redirect('kamar')->with('success', 'Data kamar berhasil ditambahkan');
     }
 
     /**
