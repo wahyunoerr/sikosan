@@ -64,7 +64,9 @@ class LandingController extends Controller
             ->where('kamar_id', $id)
             ->get();
 
-        return view('checkout', compact('kamar', 'images'));
+        $rekening = DB::table('tbl_rekening')->get();
+
+        return view('checkout', compact('kamar', 'images', 'rekening'));
     }
 
 

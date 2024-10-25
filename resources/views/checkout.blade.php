@@ -61,9 +61,11 @@
                             <p class="mb-3">Berada di Lantai : {{ $kamar->lantai ?? '' }}</p>
                             <h5 class="fw-bold mb-3">Rp. {{ number_format($kamar->harga ?? 0) }}</h5>
                             <div class="d-flex mb-4">
-                                @for ($i = 0; $i < 5; $i++)
-                                    <i class="fa fa-star {{ $i < ($kamar->rating ?? 0) ? 'text-secondary' : '' }}"></i>
-                                @endfor
+                                <i class="fa fa-star text-secondary"></i>
+                                <i class="fa fa-star text-secondary"></i>
+                                <i class="fa fa-star text-secondary"></i>
+                                <i class="fa fa-star text-secondary"></i>
+                                <i class="fa fa-star text-secondary"></i>
                             </div>
                             <div class="mb-4">
                                 @auth
@@ -90,17 +92,31 @@
                                                                 <div class="alert alert-secondary" role="alert">
                                                                     <h5 class="alert-heading">Detail Kamar Yang Akan Dibooking
                                                                     </h5>
-                                                                    <ul>
-                                                                        <li>Kode Kamar<span class="ms-2">:
-                                                                                {{ $kamar->nomor ?? '' }}</span></li>
-                                                                        <li>Lantai Kamar<span class="ms-2">:
-                                                                                {{ $kamar->lantai ?? '' }}</span></li>
-                                                                        <li>Harga Kamar<span class="ms-2">: Rp.
-                                                                                {{ number_format($kamar->harga ?? 0) }}</span>
-                                                                        </li>
-                                                                        <li>Fasilitas<span class="ms-2">:
-                                                                                {{ $kamar->fasilitas ?? '' }}</span></li>
-                                                                    </ul>
+                                                                    <div
+                                                                        class="d-flex justify-content-evenly align-items-center">
+                                                                        <ul>
+                                                                            <li>Kode Kamar<span class="ms-2">:
+                                                                                    {{ $kamar->nomor ?? '' }}</span></li>
+                                                                            <li>Lantai Kamar<span class="ms-2">:
+                                                                                    {{ $kamar->lantai ?? '' }}</span></li>
+                                                                            <li>Harga Kamar<span class="ms-2">: Rp.
+                                                                                    {{ number_format($kamar->harga ?? 0) }}</span>
+                                                                            </li>
+                                                                            <li>Fasilitas<span class="ms-2">:
+                                                                                    {{ $kamar->fasilitas ?? '' }}</span></li>
+                                                                        </ul>
+
+                                                                        @foreach ($rekening as $rkn)
+                                                                            <ul>
+                                                                                <li>A/N Rekening :<br><span
+                                                                                        class="ms-2"><strong>{{ $rkn->namaRekening }}</strong></span>
+                                                                                </li>
+                                                                                <li>Nomor Rekening :<br><span class="ms-2">
+                                                                                        <strong>{{ $rkn->nomorRekening }}</strong></span>
+                                                                                </li>
+                                                                            </ul>
+                                                                        @endforeach
+                                                                    </div>
                                                                     <hr>
                                                                     <p class="mb-0 text-center">
                                                                         <span class="badge bg-primary px-3 py-2">Status Kamar
@@ -118,7 +134,8 @@
                                                                     <input type="text" class="form-control"
                                                                         name="namaLengkapDisabled"
                                                                         value="{{ Auth::user()->name ?? '' }}"
-                                                                        id="namaLengkapDisabled" placeholder="Nama Lengkap Anda"
+                                                                        id="namaLengkapDisabled"
+                                                                        placeholder="Nama Lengkap Anda"
                                                                         aria-label="Nama Lengkap Anda" disabled readonly>
                                                                 </div>
                                                             </div>
@@ -126,7 +143,8 @@
                                                                 <label for="hargaKamarDisabled" class="form-label">Harga
                                                                     Kamar</label>
                                                                 <div class="input-group mb-3">
-                                                                    <span class="input-group-text" id="basic-addon1">Rp.</span>
+                                                                    <span class="input-group-text"
+                                                                        id="basic-addon1">Rp.</span>
                                                                     <input type="text" class="form-control"
                                                                         name="hargaKamarDisabled"
                                                                         value="{{ number_format($kamar->harga ?? 0) }}"
