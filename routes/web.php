@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::controller(LandingController::class)->group(function () {
     Route::prefix('/')->group(function () {
         Route::get('/', 'index')->name('landing.index');
-        Route::get('/kamar/{id}', 'getItemKamar')->name('landing.getKamar');
+        Route::get('/kamar-detail/{id}', 'getItemKamar')->name('landing.getKamar');
     });
 });
 
