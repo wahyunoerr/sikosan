@@ -1,102 +1,99 @@
-<footer class="main-footer">
-    <div class="auto-container">
-        <div class="widget-section">
-            <div class="row clearfix">
-                <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                    <div class="footer-widget logo-widget">
-                        <figure class="footer-logo"><a href="index.html"><img src="assets/images/footer-logo.png"
-                                    alt=""></a></figure>
-                        <div class="text">
-                            <p>Sunt culpa qui officia deslys mollit ipsum est dolor se laborum. Sed perspiciatis
-                                un iste natus error sit voluptatem.</p>
-                        </div>
-                        <ul class="social-links clearfix">
-                            <li><a href="index.html"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="index.html"><i class="fab fa-facebook-f"></i></a></li>
-                            <li><a href="index.html"><i class="fab fa-instagram"></i></a></li>
-                            <li><a href="index.html"><i class="fab fa-linkedin-in"></i></a></li>
-                        </ul>
+<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5">
+    <div class="container py-5">
+        <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(226, 175, 24, 0.5)">
+            <div class="row g-4">
+                <div class="col-lg-3">
+                    <a href="#">
+                        <h1 class="text-primary mb-0">Fruitables</h1>
+                        <p class="text-secondary mb-0">Fresh products</p>
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <div class="position-relative mx-auto">
+                        <input class="form-control border-0 w-100 py-3 px-4 rounded-pill" type="number"
+                            placeholder="Your Email" />
+                        <button type="submit"
+                            class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white"
+                            style="top: 0; right: 0">
+                            Subscribe Now
+                        </button>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                    <div class="footer-widget links-widget">
-                        <div class="widget-title">
-                            <h3>What We Offers</h3>
-                        </div>
-                        <div class="widget-content">
-                            <ul class="links-list clearfix">
-                                <li><a href="index.html">Garage Door Repair</a></li>
-                                <li><a href="index.html">OverHead Doors</a></li>
-                                <li><a href="index.html">Garage Door Installation</a></li>
-                                <li><a href="index.html">Door Opener Repair</a></li>
-                                <li><a href="index.html">Grilles And Gates</a></li>
-                                <li><a href="index.html">Garage Door Parts</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                    <div class="footer-widget links-widget">
-                        <div class="widget-title">
-                            <h3>About Dormatic</h3>
-                        </div>
-                        <div class="widget-content">
-                            <ul class="links-list clearfix">
-                                <li><a href="index.html">Service Locations</a></li>
-                                <li><a href="index.html">Career Opportunities</a></li>
-                                <li><a href="index.html">Training Center</a></li>
-                                <li><a href="index.html">Safety Commitment</a></li>
-                                <li><a href="index.html">Photo Gallery</a></li>
-                                <li><a href="index.html">Download Center</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12 footer-column">
-                    <div class="footer-widget contact-widget">
-                        <div class="widget-title">
-                            <h3>Get In Touch</h3>
-                        </div>
-                        <div class="widget-content">
-                            <ul class="info clearfix">
-                                <li>72 Main Drive, Calibry, Florida 890012 USA</li>
-                                <li><a href="tel:+12017193488">(+1) 201 719 3488</a></li>
-                                <li><a href="mailto:support@example.com">support@example.com</a></li>
-                                <li><span>Working Hours</span></li>
-                                <li>Mon - Sat : 9am to 7pm</li>
-                                <li>Sunday is Closed</li>
-                            </ul>
-                        </div>
+                <div class="col-lg-3">
+                    <div class="d-flex justify-content-end pt-3">
+                        <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i
+                                class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-secondary me-2 btn-md-square rounded-circle" href=""><i
+                                class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-secondary btn-md-square rounded-circle" href=""><i
+                                class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="subscribe-inner clearfix">
-            <div class="widget-title pull-left">
-                <h3>Subscribe To Newsletter</h3>
+        <div class="row g-5">
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-item">
+                    <h4 class="text-light mb-3">Why People Like us!</h4>
+                    <p class="mb-4">
+                        typesetting, remaining essentially unchanged. It was popularised
+                        in the 1960s with the like Aldus PageMaker including of Lorem
+                        Ipsum.
+                    </p>
+                    <a href="" class="btn border-secondary py-2 px-4 rounded-pill text-primary">Read
+                        More</a>
+                </div>
             </div>
-            <div class="form-inner pull-right">
-                <form action="contact.html" method="post" class="subscribe-form clearfix">
-                    <div class="form-group">
-                        <input type="text" name="neme" placeholder="Your Name" required="">
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Email" required="">
-                    </div>
-                    <div class="message-btn">
-                        <button type="submit" class="theme-btn-one"><span class="btn-shape"></span>subscribe</button>
-                    </div>
-                </form>
+            <div class="col-lg-3 col-md-6">
+                <div class="d-flex flex-column text-start footer-item">
+                    <h4 class="text-light mb-3">Shop Info</h4>
+                    <a class="btn-link" href="">About Us</a>
+                    <a class="btn-link" href="">Contact Us</a>
+                    <a class="btn-link" href="">Privacy Policy</a>
+                    <a class="btn-link" href="">Terms & Condition</a>
+                    <a class="btn-link" href="">Return Policy</a>
+                    <a class="btn-link" href="">FAQs & Help</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="d-flex flex-column text-start footer-item">
+                    <h4 class="text-light mb-3">Account</h4>
+                    <a class="btn-link" href="">My Account</a>
+                    <a class="btn-link" href="">Shop details</a>
+                    <a class="btn-link" href="">Shopping Cart</a>
+                    <a class="btn-link" href="">Wishlist</a>
+                    <a class="btn-link" href="">Order History</a>
+                    <a class="btn-link" href="">International Orders</a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-item">
+                    <h4 class="text-light mb-3">Contact</h4>
+                    <p>Address: 1429 Netus Rd, NY 48247</p>
+                    <p>Email: Example@gmail.com</p>
+                    <p>Phone: +0123 4567 8910</p>
+                    <p>Payment Accepted</p>
+                    <img src="img/payment.png" class="img-fluid" alt="" />
+                </div>
             </div>
         </div>
     </div>
-    <div class="footer-bottom centred">
-        <div class="auto-container">
-            <div class="copyright">
-                <p>Dormatic - Garage Door Repairs (c) 2021&nbsp;&nbsp;&nbsp;&nbsp;<a
-                        href="index.html"><span>Sitemap</span></a>&nbsp;&nbsp;&nbsp;&nbsp;<a
-                        href="index.html"><span>Terms & Conditions</span></a></p>
+</div>
+
+<!-- Copyright Start -->
+<div class="container-fluid copyright bg-dark py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Your
+                        SI KOSAN</a>, All right reserved.</span>
+            </div>
+            <div class="col-md-6 my-auto text-center text-md-end text-white">
+                {{ now()->format('Y') }}
             </div>
         </div>
     </div>
-</footer>
+</div>
+<!-- Copyright End -->

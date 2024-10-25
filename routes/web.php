@@ -20,10 +20,17 @@ use Illuminate\Support\Facades\Route;
 Route::controller(LandingController::class)->group(function () {
     Route::prefix('/')->group(function () {
         Route::get('/', 'index')->name('landing.index');
+        Route::get('/kamar/{id}', 'getItemKamar')->name('landing.getKamar');
     });
 });
 
-Auth::routes();
+Auth::routes([
+    'password.confirm' => false,
+    'password.email' => false,
+    'password.request' => false,
+    'password.reset' => false,
+    'password.update' => false,
+]);
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

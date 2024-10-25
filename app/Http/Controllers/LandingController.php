@@ -10,12 +10,23 @@ class LandingController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $kamar = DB::table('tbl_kamar')
+        $query = DB::table('tbl_kamar')
             ->join('tbl_upload_file_image', 'tbl_kamar.id', '=', 'tbl_upload_file_image.kamar_id')
-            ->select('tbl_kamar.*', 'tbl_upload_file_image.nameImage')
-            ->get();
+            ->select('tbl_kamar.*', 'tbl_upload_file_image.nameImage');
+
+        if ($request->has('search') && $request->input('search') != '') {
+            $searchTerm = $request->input('search');
+            $query->where(function ($subquery) use ($searchTerm) {
+                $subquery->where('tbl_kamar.nomor', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('tbl_kamar.lantai', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('tbl_kamar.fasilitas', 'like', '%' . $searchTerm . '%');
+            });
+        }
+
+        $kamar = $query->get()->groupBy('id');
+
         return view('welcome', compact('kamar'));
     }
 
@@ -46,10 +57,16 @@ class LandingController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function getItemKamar(string $id)
     {
-        //
+        $kamar = DB::table('tbl_kamar')->where('id', $id)->first();
+        $images = DB::table('tbl_upload_file_image')
+            ->where('kamar_id', $id)
+            ->get();
+
+        return view('checkout', compact('kamar', 'images'));
     }
+
 
     /**
      * Update the specified resource in storage.

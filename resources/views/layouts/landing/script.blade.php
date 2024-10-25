@@ -1,15 +1,9 @@
- <!-- jequery plugins -->
- <script src="{{ asset('assets/assetsLanding/js/jquery.js') }}"></script>
- <script src="{{ asset('assets/assetsLanding/js/popper.min.js') }}"></script>
- <script src="{{ asset('assets/assetsLanding/js/bootstrap.min.js') }}"></script>
- <script src="{{ asset('assets/assetsLanding/js/owl.js') }}"></script>
- <script src="{{ asset('assets/assetsLanding/js/wow.js') }}"></script>
- <script src="{{ asset('assets/assetsLanding/js/validation.js') }}"></script>
- <script src="{{ asset('assets/assetsLanding/js/jquery.fancybox.js') }}"></script>
- <script src="{{ asset('assets/assetsLanding/js/appear.js') }}"></script>
- <script src="{{ asset('assets/assetsLanding/js/scrollbar.js') }}"></script>
- <script src="{{ asset('assets/assetsLanding/js/jquery.nice-select.min.js') }}"></script>
- <script src="{{ asset('assets/assetsLanding/js/isotope.js') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('assets/assetsLanding/lib/easing/easing.min.js') }}"></script>
+<script src="{{ asset('assets/assetsLanding/lib/waypoints/waypoints.min.js') }}"></script>
+<script src="{{ asset('assets/assetsLanding/lib/lightbox/js/lightbox.min.js') }}"></script>
+<script src="{{ asset('assets/assetsLanding/lib/owlcarousel/owl.carousel.min.js') }}"></script>
 
- <!-- main-js -->
- <script src="{{ asset('assets/assetsLanding/js/script.js') }}"></script>
+<!-- Template Javascript -->
+<script src="{{ asset('assets/assetsLanding/js/main.js') }}"></script>
