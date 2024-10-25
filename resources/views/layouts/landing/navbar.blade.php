@@ -19,8 +19,10 @@
                                 Dashboard<i class="bi bi-box-arrow-in-right ms-2"></i></small></a>
                     @endrole
                     @role('customer')
-                        <a href="{{ route('logout') }}" class="text-white"><small class="text-white ms-2">Log Out</small><i
-                                class="bi bi-box-arrow-right ms-2"></i></a>
+                        <a href="{{ route('logout') }}" class="text-white"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><small
+                                class="text-white ms-2">Log Out</small><i class="bi bi-box-arrow-right ms-2"></i></a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="post">@csrf</form>
                     @endrole
                 </div>
             @endguest

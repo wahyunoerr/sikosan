@@ -15,8 +15,24 @@
 @section('content')
     <div class="container-fluid py-5 mt-5">
         <div class="container py-5">
+
+            @if ($errors->any())
+                <div class="my-3">
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>
+                                    <i class="bi bi-exclamation-diamond-fill me-2"></i><strong>{{ $error }}</strong>
+                                </li>
+                            @endforeach
+                        </ul>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </div>
+            @endif
+
             <div class="row g-4 mb-5">
-                <div class="col-lg-12s col-xl-12">
+                <div class="col-lg-12 col-xl-12">
                     <div class="row g-4">
                         <div class="col-lg-6">
                             <div class="rounded">
@@ -66,10 +82,11 @@
                                     <!-- Modal -->
                                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                                         aria-hidden="true">
-                                        <div class="modal-dialog modal-lg">
+                                        <div class="modal-dialog modal-lg modal-dialog-scrollable">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalLabel">Form Booking Kamar Kosan</h5>
+                                                    <h5 class="modal-title" id="exampleModalLabel">Form Booking Kamar Kosan
+                                                    </h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
@@ -79,29 +96,33 @@
                                                         <div class="row align-items-center g-3">
                                                             <div class="col-md-12">
                                                                 <div class="alert alert-secondary" role="alert">
-                                                                    <h4 class="alert-heading">Detail Kamar Yang Akan Dibooking
-                                                                    </h4>
+                                                                    <h5 class="alert-heading">Detail Kamar Yang Akan
+                                                                        Dibooking
+                                                                    </h5>
                                                                     <ul>
                                                                         <li>Kode Kamar<span class="ms-2">:
                                                                                 {{ $kamar->nomor }}</span></li>
                                                                         <li>Lantai Kamar<span class="ms-2">:
                                                                                 {{ $kamar->lantai }}</span></li>
                                                                         <li>Harga Kamar<span class="ms-2">: Rp.
-                                                                                {{ number_format($kamar->harga) }}</span></li>
+                                                                                {{ number_format($kamar->harga) }}</span>
+                                                                        </li>
                                                                         <li>Fasilitas<span class="ms-2">:
                                                                                 {{ $kamar->fasilitas }}</span></li>
                                                                     </ul>
                                                                     <hr>
                                                                     <p class="mb-0 text-center">
-                                                                        <span class="badge bg-primary px-3 py-2">Status Kamar
+                                                                        <span class="badge bg-primary px-3 py-2">Status
+                                                                            Kamar
                                                                             Saat
                                                                             Ini :
                                                                             <strong>{{ $kamar->status }}</strong></span>
                                                                     </p>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-6">
-                                                                <label for="namaLengkapDisabled" class="form-label">Nama Lengkap
+                                                            <div class="col-md-3">
+                                                                <label for="namaLengkapDisabled" class="form-label">Nama
+                                                                    Lengkap
                                                                     Anda</label>
                                                                 <div class="input-group mb-3">
                                                                     <span class="input-group-text" id="basic-addon1"><i
@@ -109,9 +130,34 @@
                                                                     <input type="text" class="form-control"
                                                                         name="namaLengkapDisabled"
                                                                         value="{{ Auth::user()->name }}"
-                                                                        id="namaLengkapDisabled" placeholder="Nama Lengkap Anda"
+                                                                        id="namaLengkapDisabled"
+                                                                        placeholder="Nama Lengkap Anda"
                                                                         aria-label="Nama Lengkap Anda"
                                                                         aria-describedby="basic-addon1" disabled readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                <label for="hargaKamarDisabled" class="form-label">Harga
+                                                                    Kamar
+                                                                </label>
+                                                                <div class="input-group mb-3">
+                                                                    <span class="input-group-text"
+                                                                        id="basic-addon1">Rp.</span>
+                                                                    <input type="text" class="form-control"
+                                                                        name="hargaKamarDisabled"
+                                                                        value="{{ number_format($kamar->harga) }}"
+                                                                        id="hargaKamarDisabled"
+                                                                        placeholder="Nama Lengkap Anda"
+                                                                        aria-label="Nama Lengkap Anda"
+                                                                        aria-describedby="basic-addon1" disabled readonly>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <label for="uploadBukti" class="form-label">Upload
+                                                                    Bukti Pembayaran</label>
+                                                                <div class="input-group mb-3">
+                                                                    <input class="form-control" type="file"
+                                                                        id="uploadBukti" name="uploadBukti">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -120,7 +166,7 @@
                                                         <button type="button" class="btn btn-secondary"
                                                             data-bs-dismiss="modal"><i
                                                                 class="bi bi-x-circle-fill me-2"></i>Close</button>
-                                                        <button type="button" class="btn btn-primary"><i
+                                                        <button type="sunmit" class="btn btn-primary"><i
                                                                 class="bi bi-check-circle-fill me-2"></i>Submit</button>
                                                     </div>
                                                 </form>
@@ -178,7 +224,8 @@
                                                 </div>
                                             </div>
                                             <p>
-                                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat eligendi
+                                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat
+                                                eligendi
                                                 animi sapiente nisi veritatis quibusdam sed, cupiditate possimus facilis
                                                 assumenda.
                                             </p>
@@ -203,7 +250,8 @@
                                                 </div>
                                             </div>
                                             <p class="text-dark">
-                                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat eligendi
+                                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat
+                                                eligendi
                                                 animi sapiente nisi veritatis quibusdam sed, cupiditate possimus facilis
                                                 assumenda.
                                             </p>
