@@ -1,12 +1,10 @@
 @extends('layouts.app')
-@section('title', 'Data Booking')
+@section('title', 'Data Transaksi')
 @section('content')
     <div class="col-md-12 project-list">
         <div class="card">
             <div class="card-header pb-0">
                 <h3>DataTable @yield('title')</h3>
-                <a class="btn btn-outline-primary-2x float-right" href="{{ route('kamar.add') }}">
-                    <i class="fa fa-plus"></i> Tambah</a>
             </div>
             <div class="card-body">
                 <div class="table-responsive theme-scrollbar">
@@ -15,15 +13,12 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama</th>
-                                <th>Info Kamar Dibooking</th>
-                                <th>Harga Kamar Dibooking</th>
+                                <th>Harga Transaksi</th>
                                 <th>Bukti Bayar</th>
-                                <th>Status Booking</th>
-                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($booking as $b)
+                            {{-- @foreach ($transaksi as $t)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $b->nama_customer }}</td>
@@ -34,8 +29,7 @@
                                     <td>Rp. {{ number_format($b->harga_kamar_booking) }}</td>
                                     <td>
                                         @if ($b->bukti_bayar)
-                                            <a href="#" data-bs-toggle="modal"
-                                                data-original-title="Lihat Bukti Booking"
+                                            <a href="#" data-bs-toggle="modal" data-original-title="Lihat Bukti Booking"
                                                 data-bs-target="#viewBuktiModal-{{ $b->id }}">
                                                 <img src="{{ Storage::disk('public')->url('upload/bukti/' . $b->bukti_bayar) }}"
                                                     class="img-fluid rounded shadow-lg" alt="img-bukti"
@@ -63,37 +57,14 @@
                                                         class="icon-pencil-alt"></i></a></li>
                                             <li class="delete"><a href="{{ route('kamar.delete', $b->id) }}"
                                                     data-confirm-delete="true"><i class="icon-trash"></i></a></li>
-                                        </ul>
-                                        <div class="my-2">
-                                            <div class="btn-group" role="group"
-                                                aria-label="Button group with nested dropdown">
-                                                <div class="btn-group" role="group">
-                                                    <button class="btn btn-primary btn-sm dropdown-toggle"
-                                                        id="btnGroupDrop1" type="button" data-bs-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false">Ubah Status</button>
-                                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                                        <button class="dropdown-item" type="button" name="setujui"
-                                                            onclick="event.preventDefault(); document.getElementById('formActions-status-{{ $b->id }}').submit();">
-                                                            Setujui Booking
-                                                        </button>
-                                                        <button class="dropdown-item" type="button" name="tolak"
-                                                            onclick="event.preventDefault(); document.getElementById('formActions-status-{{ $b->id }}').submit();">
-                                                            Tolak Booking
-                                                        </button>
-                                                        @if ($b->status == 'Disetujui' || $b->status == 'Ditolak')
-                                                            <button class="dropdown-item" type="button" name="menunggu"
-                                                                onclick="event.preventDefault(); document.getElementById('formActions-status-{{ $b->id }}').submit();">
-                                                                Kembalikan Menunggu
-                                                            </button>
-                                                        @endif
-                                                    </div>
-                                                </div>
+                                            <li class="edit"><a href="{{ route('kamar.delete', $b->id) }}"
+                                                    title="Setujui Status Booking"
+                                                    onclick="event.prefentDefault(); document.getElementById('setujuiStatus-{{ $b->id }}').submit();"><i
+                                                        class="icon-check"></i></a></li>
 
-                                                <form action="{{ route('transaksi.store', $b->id) }}" method="POST"
-                                                    class="d-none" enctype="multipart/form-data"
-                                                    id="formActions-status-{{ $b->id }}">@csrf</form>
-                                            </div>
-                                        </div>
+                                            <form action="#" method="POST" enctype="multipart/form-data"
+                                                id="setujuiStatus-{{ $b->id }}">@csrf</form>
+                                        </ul>
                                     </td>
 
                                     <div class="modal fade" id="viewBuktiModal-{{ $b->id }}" tabindex="-1"
@@ -121,9 +92,10 @@
                                         </div>
                                     </div>
                                 </tr>
-                            @endforeach
+                            @endforeach --}}
                         </tbody>
                     </table>
+
                 </div>
             </div>
         </div>

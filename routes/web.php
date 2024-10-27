@@ -4,6 +4,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\RekeningController;
+use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -65,6 +66,13 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
             Route::get('/edit/{id}', 'edit')->name('rekening.edit');
             Route::post('/update/{id}', 'update')->name('rekening.update');
             Route::delete('/delete/{id}', 'destroy')->name('rekening.delete');
+        });
+    });
+
+    Route::controller(TransaksiController::class)->group(function () {
+        Route::prefix('transaksi')->group(function () {
+            Route::get('/', 'index');
+            Route::post('/store/{id}', 'store')->name('transaksi.store');
         });
     });
 });

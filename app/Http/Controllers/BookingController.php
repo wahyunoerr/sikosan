@@ -35,7 +35,11 @@ class BookingController extends Controller
     {
         $query = DB::table('users')->where('id', Auth::user()->id)->first();
 
-        $booking = DB::table('tbl_booking')->where('customer_id', $query->id)->get();
+        $booking = DB::table('tbl_booking')
+            ->where('customer_id', $query->id)
+            ->join('tbl_kamar', 'tbl_booking.kamar_id', '=', 'tbl_kamar.id')
+            ->select('tbl_booking.*', 'tbl_kamar.nomor', 'tbl_kamar.lantai', 'tbl_kamar.status AS status_kamar')
+            ->get();
 
         return view('pages.booking.customerlist', compact('booking'));
     }

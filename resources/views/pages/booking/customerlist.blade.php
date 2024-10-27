@@ -6,22 +6,91 @@
             <h1 class="mb-4">List Ruangan Kost</h1>
             <div class="row g-4">
                 <div class="col-lg-12">
-                    <div class="row g-4 my-3 align-items-center">
-                        <div class="col-xl-6">
-                            <form action="{{ route('landing.index') }}" method="GET">
-                                <div class="input-group w-50 d-flex">
-                                    <input type="search" name="search" class="form-control p-3" placeholder="keywords"
-                                        aria-describedby="search-icon-1" />
-                                    <span id="search-icon-1" class="input-group-text p-3"><i
-                                            class="fa fa-search"></i></span>
-                                </div>
-                            </form>
+                    <h3 class="text-primary display-5 my-3">My Booking List</h3>
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <div class="table-responsive p-3">
+                                <table class="table table-bordered table-hovered">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">No</th>
+                                            <th scope="col">Nomor Kamar Dibooking</th>
+                                            <th scope="col">Lantai Kamar Dibooking</th>
+                                            <th scope="col">Harga Kamar Dibooking</th>
+                                            <th scope="col">Bukti Pembayaran</th>
+                                            <th scope="col">Status Booking</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse ($booking as $b)
+                                            <tr>
+                                                <td scope="row">{{ $loop->iteration }}</td>
+                                                <td>{{ $b->nomor }}</td>
+                                                <td>{{ $b->lantai }}</td>
+                                                <td>Rp. {{ number_format($b->harga_kamar_booking) }}</td>
+                                                <td>
+                                                    <a href="#" data-bs-toggle="modal"
+                                                        data-original-title="Lihat Bukti Booking"
+                                                        data-bs-target="#viewBuktiModal-{{ $b->id }}">
+                                                        <img src="{{ Storage::disk('public')->url('upload/bukti/' . $b->bukti_bayar) }}"
+                                                            class="img-fluid rounded shadow-lg" alt="img-bukti"
+                                                            width="50"></img>
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    @if ($b->status == 'Menunggu')
+                                                        <span
+                                                            class="badge px-3 py-2 rounded-pill bg-info">{{ $b->status }}...</span>
+                                                    @elseif ($b->status == 'Ditolak')
+                                                        <span
+                                                            class="badge px-3 py-2 rounded-pill bg-danger">{{ $b->status }}</span>
+                                                    @else
+                                                        <span
+                                                            class="badge px-3 py-2 rounded-pill bg-success">{{ $b->status }}</span>
+                                                    @endif
+                                                </td>
 
-                        </div>
-                        <div class="col-6 text-end">
-                            <a href="{{ route('landing.index') }}" class="btn btn-danger btn-lg px-4 rounded">
-                                <i class="fa fa-times me-2"></i> Reset Search
-                            </a>
+                                                <div class="modal fade" id="viewBuktiModal-{{ $b->id }}"
+                                                    tabindex="-1" role="dialog"
+                                                    aria-labelledby="viewBuktiModal-{{ $b->id }}Label"
+                                                    aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title"
+                                                                    id="viewBuktiModal-{{ $b->id }}Label">
+                                                                    Bukti Pembayaran Booking</h5>
+                                                                <button class="btn-close" type="button"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="img-fluid d-flex justify-content-center">
+                                                                    <img src="{{ Storage::disk('public')->url('upload/bukti/' . $b->bukti_bayar) }}"
+                                                                        alt="modal-image-bukti" width="300"
+                                                                        class="shadow">
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-success px-3" type="button"
+                                                                    data-bs-dismiss="modal">Close</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </tr>
+                                        @empty
+                                            <tr>
+                                                <td scope="row" colspan="6" class="text-center">Anda belum melakukan
+                                                    booking apapun, <a href="{{ url('/') }}">Silahkan booking kamar
+                                                        yang
+                                                        anda
+                                                        inginkan!</a>
+                                                </td>
+                                            </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
