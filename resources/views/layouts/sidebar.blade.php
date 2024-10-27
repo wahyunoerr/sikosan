@@ -32,6 +32,12 @@
                             <li><a href="#">Pengguna</a></li>
                         </ul>
                     </li>
+                    <li class="sidebar-list"></i><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
+                                data-feather="list"></i><span>Booking Data</span></a>
+                        <ul class="sidebar-submenu">
+                            <li><a href="/booking">Booking</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>

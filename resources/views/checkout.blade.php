@@ -13,6 +13,36 @@
 @endsection
 
 @section('content')
+    <style>
+        .modal-body {
+            max-height: 400px;
+            /* Set max height as needed */
+            overflow-y: auto;
+            scrollbar-width: thin;
+            /* For Firefox */
+            scrollbar-color: #3b3b4f #1a1a2e;
+            /* Custom scrollbar color for Firefox */
+        }
+
+        /* Custom scrollbar styling for WebKit browsers (e.g., Chrome, Safari) */
+        .modal-body::-webkit-scrollbar {
+            width: 6px;
+            /* Width of the scrollbar */
+        }
+
+        .modal-body::-webkit-scrollbar-track {
+            background: #1a1a2e;
+            /* Background of the scrollbar track */
+        }
+
+        .modal-body::-webkit-scrollbar-thumb {
+            background-color: #3b3b4f;
+            /* Color of the scrollbar thumb */
+            border-radius: 10px;
+            /* Rounded edges for the thumb */
+        }
+    </style>
+
     <div class="container-fluid py-5 mt-5">
         <div class="container py-5">
 
@@ -84,7 +114,8 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
-                                                <form action="#" method="POST" enctype="multipart/form-data">
+                                                <form action="{{ route('booking.save') }}" method="POST"
+                                                    enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="modal-body">
                                                         <div class="row align-items-center g-3">
@@ -92,30 +123,36 @@
                                                                 <div class="alert alert-secondary" role="alert">
                                                                     <h5 class="alert-heading">Detail Kamar Yang Akan Dibooking
                                                                     </h5>
-                                                                    <div
-                                                                        class="d-flex justify-content-evenly align-items-center">
-                                                                        <ul>
-                                                                            <li>Kode Kamar<span class="ms-2">:
-                                                                                    {{ $kamar->nomor ?? '' }}</span></li>
-                                                                            <li>Lantai Kamar<span class="ms-2">:
-                                                                                    {{ $kamar->lantai ?? '' }}</span></li>
-                                                                            <li>Harga Kamar<span class="ms-2">: Rp.
-                                                                                    {{ number_format($kamar->harga ?? 0) }}</span>
-                                                                            </li>
-                                                                            <li>Fasilitas<span class="ms-2">:
-                                                                                    {{ $kamar->fasilitas ?? '' }}</span></li>
-                                                                        </ul>
-
-                                                                        @foreach ($rekening as $rkn)
+                                                                    <div class="row align-items-center">
+                                                                        <div class="col-md-7">
                                                                             <ul>
-                                                                                <li>A/N Rekening :<br><span
-                                                                                        class="ms-2"><strong>{{ $rkn->namaRekening }}</strong></span>
+                                                                                <li>Kode Kamar<span class="ms-2">:
+                                                                                        <strong>{{ $kamar->nomor ?? '' }}</strong></span>
                                                                                 </li>
-                                                                                <li>Nomor Rekening :<br><span class="ms-2">
-                                                                                        <strong>{{ $rkn->nomorRekening }}</strong></span>
+                                                                                <li>Lantai Kamar<span class="ms-2">:
+                                                                                        <strong>{{ $kamar->lantai ?? '' }}</strong></span>
+                                                                                </li>
+                                                                                <li>Harga Kamar<span class="ms-2">: Rp.
+                                                                                        <strong>{{ number_format($kamar->harga ?? 0) }}</strong></span>
+                                                                                </li>
+                                                                                <li>Fasilitas<span class="ms-2">:
+                                                                                        <strong>{{ $kamar->fasilitas ?? '' }}</strong></span>
                                                                                 </li>
                                                                             </ul>
-                                                                        @endforeach
+                                                                        </div>
+
+                                                                        <div class="col-md-5">
+                                                                            @foreach ($rekening as $rkn)
+                                                                                <ul>
+                                                                                    <li>A/N Rekening :<span
+                                                                                            class="ms-2"><strong>{{ $rkn->namaRekening }}</strong></span>
+                                                                                    </li>
+                                                                                    <li>Nomor Rekening :<span class="ms-2">
+                                                                                            <strong>{{ $rkn->nomorRekening }}</strong></span>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            @endforeach
+                                                                        </div>
                                                                     </div>
                                                                     <hr>
                                                                     <p class="mb-0 text-center">
@@ -160,6 +197,8 @@
                                                                         id="uploadBukti" name="uploadBukti">
                                                                 </div>
                                                             </div>
+                                                            <input class="d-none" type="text" id="kamarID"
+                                                                name="kamarID" value="{{ $kamar->id }}">
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">

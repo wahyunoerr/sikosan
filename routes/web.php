@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\RekeningController;
@@ -55,6 +56,24 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
             Route::post('/update/{id}', 'update')->name('rekening.update');
             Route::post('/save', 'store')->name('rekening.save');
             Route::delete('/delete/{id}', 'destroy')->name('rekening.delete');
+        });
+    });
+
+    Route::controller(BookingController::class)->group(function () {
+        Route::prefix('booking')->group(function () {
+            Route::get('/', 'index');
+            Route::get('/edit/{id}', 'edit')->name('rekening.edit');
+            Route::post('/update/{id}', 'update')->name('rekening.update');
+            Route::delete('/delete/{id}', 'destroy')->name('rekening.delete');
+        });
+    });
+});
+
+Route::middleware(['auth', 'role:customer|admin'])->group(function () {
+    Route::controller(BookingController::class)->group(function () {
+        Route::prefix('booking')->group(function () {
+            Route::get('/customer', 'customerBooking')->name('booking.customer');
+            Route::post('/save', 'store')->name('booking.save');
         });
     });
 });
