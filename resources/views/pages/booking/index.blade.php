@@ -67,31 +67,36 @@
                                         <div class="my-2">
                                             <div class="btn-group" role="group"
                                                 aria-label="Button group with nested dropdown">
-                                                <div class="btn-group" role="group">
-                                                    <button class="btn btn-primary btn-sm dropdown-toggle"
-                                                        id="btnGroupDrop1" type="button" data-bs-toggle="dropdown"
-                                                        aria-haspopup="true" aria-expanded="false">Ubah Status</button>
-                                                    <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                                        <button class="dropdown-item" type="button" name="setujui"
-                                                            onclick="event.preventDefault(); document.getElementById('formActions-status-{{ $b->id }}').submit();">
-                                                            Setujui Booking
-                                                        </button>
-                                                        <button class="dropdown-item" type="button" name="tolak"
-                                                            onclick="event.preventDefault(); document.getElementById('formActions-status-{{ $b->id }}').submit();">
-                                                            Tolak Booking
-                                                        </button>
-                                                        @if ($b->status == 'Disetujui' || $b->status == 'Ditolak')
-                                                            <button class="dropdown-item" type="button" name="menunggu"
-                                                                onclick="event.preventDefault(); document.getElementById('formActions-status-{{ $b->id }}').submit();">
-                                                                Kembalikan Menunggu
-                                                            </button>
-                                                        @endif
-                                                    </div>
-                                                </div>
-
                                                 <form action="{{ route('transaksi.store', $b->id) }}" method="POST"
-                                                    class="d-none" enctype="multipart/form-data"
-                                                    id="formActions-status-{{ $b->id }}">@csrf</form>
+                                                    enctype="multipart/form-data"
+                                                    id="formActions-status-{{ $b->id }}">
+                                                    @csrf
+                                                    <input type="hidden" name="action" id="action-{{ $b->id }}">
+
+                                                    <div class="btn-group" role="group">
+                                                        <button class="btn btn-primary btn-sm dropdown-toggle"
+                                                            id="btnGroupDrop1" type="button" data-bs-toggle="dropdown"
+                                                            aria-haspopup="true" aria-expanded="false">
+                                                            Ubah Status
+                                                        </button>
+                                                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                                            <button class="dropdown-item" type="button"
+                                                                onclick="event.preventDefault(); document.getElementById('action-{{ $b->id }}').value='setujui'; document.getElementById('formActions-status-{{ $b->id }}').submit();">
+                                                                Setujui Booking
+                                                            </button>
+                                                            <button class="dropdown-item" type="button"
+                                                                onclick="event.preventDefault(); document.getElementById('action-{{ $b->id }}').value='tolak'; document.getElementById('formActions-status-{{ $b->id }}').submit();">
+                                                                Tolak Booking
+                                                            </button>
+                                                            @if ($b->status == 'Disetujui' || $b->status == 'Ditolak')
+                                                                <button class="dropdown-item" type="button"
+                                                                    onclick="event.preventDefault(); document.getElementById('action-{{ $b->id }}').value='menunggu'; document.getElementById('formActions-status-{{ $b->id }}').submit();">
+                                                                    Kembalikan Menunggu
+                                                                </button>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </td>

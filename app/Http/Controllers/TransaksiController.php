@@ -31,7 +31,9 @@ class TransaksiController extends Controller
             return redirect()->back()->with('warning', 'Data booking tidak ditemukan!');
         }
 
-        if ($request->has('setujui')) {
+        $action = $request->input('action');
+
+        if ($action === 'setujui') {
             DB::table('tbl_transaksi')->insert([
                 'booking_id' => $booking->id,
                 'total_bayar' => $booking->harga_kamar_booking
@@ -42,7 +44,7 @@ class TransaksiController extends Controller
             ]);
 
             return redirect('/transaksi')->with('success', 'Transaksi berhasil dilakukan!');
-        } elseif ($request->has('tolak')) {
+        } elseif ($action === 'tolak') {
             DB::table('tbl_booking')->where('id', $id)->update([
                 'status' => 'Ditolak'
             ]);
@@ -56,7 +58,6 @@ class TransaksiController extends Controller
             return redirect()->back()->with('success', 'Status booking diperbarui menjadi menunggu.');
         }
     }
-
 
     /**
      * Remove the specified resource from storage.
