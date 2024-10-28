@@ -151,13 +151,18 @@ class KamarController extends Controller
     public function destroy(string $id)
     {
 
-        // $kamar = DB::table('tbl_kamar')->where('id', $id)->first();
+        $images = DB::table('tbl_upload_file_image')
+            ->where('kamar_id', $id)
+            ->get();
 
-        // $imageId = DB::table('tbl_upload_file_image')->where('kamar_id', $id)->get();
-        // Storage::disk('public')->delete('upload/image/' . $imageId->nameImage);
+        foreach ($images as $image) {
+            Storage::disk('public')->delete('upload/image/' . $image->nameImage);
+        }
+
+        DB::table('tbl_upload_file_image')->where('kamar_id', $id)->delete();
 
         DB::table('tbl_kamar')->where('id', $id)->delete();
 
-        return redirect()->back()->with('success', 'Data berhasil dihapus');
+        return redirect()->back()->with('success', 'Data berhasil dihapus.');
     }
 }
