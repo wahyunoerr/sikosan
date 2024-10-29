@@ -27,6 +27,27 @@ class BookingController extends Controller
         return view('pages.booking.index', compact('booking'));
     }
 
+    function statusBoking($id)
+    {
+        $updateStatus = DB::table('tbl_booking')->where('id', $id)->first();
+
+        if ($updateStatus->status == 'Disetujui') {
+            DB::table('tbl_booking')->update([
+                'status' => 'Disetujui'
+            ]);
+        } elseif ($updateStatus->status == 'Ditolak') {
+            DB::table('tbl_booking')->update([
+                'status' => 'Ditolak'
+            ]);
+        } elseif ($updateStatus->status == 'Menunggu') {
+            DB::table('tbl_booking')->update([
+                'status' => 'Menunggu'
+            ]);
+        }
+
+        return view('pages.booking.index', compact('updateStatus'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -69,7 +90,7 @@ class BookingController extends Controller
             'bukti_bayar' => $imageName,
             'status' => 'Menunggu',
             'created_at' => now(),
-            'updated_ta' => now(),
+            'updated_at' => now(),
         ]);
 
         return redirect('booking')->withSuccess('Anda berhasil melakukan booking!');

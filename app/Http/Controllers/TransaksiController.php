@@ -43,6 +43,10 @@ class TransaksiController extends Controller
                 'status' => 'Disetujui'
             ]);
 
+            DB::table('tbl_kamar')->where('id', $id)->update([
+                'status' => 'Sudah Dihuni'
+            ]);
+
             return redirect('/transaksi')->with('success', 'Transaksi berhasil dilakukan!');
         } elseif ($action === 'tolak') {
             DB::table('tbl_booking')->where('id', $id)->update([

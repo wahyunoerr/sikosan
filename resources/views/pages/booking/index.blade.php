@@ -64,7 +64,25 @@
                                             <li class="delete"><a href="{{ route('kamar.delete', $b->id) }}"
                                                     data-confirm-delete="true"><i class="icon-trash"></i></a></li>
                                         </ul>
-                                        <div class="my-2">
+                                        <div class="dropup-basic dropdown-basic">
+                                            <div class="dropstart dropdown me-3">
+                                                <button class="dropbtn btn-pill btn-info" type="button">Status<span><i
+                                                            class="icofont icofont-arrow-left"></i>
+                                                    </span>
+                                                </button>
+                                                <div class="dropstart-content dropdown-content">
+                                                    <form action="{{ route('transaksi.store', $b->id) }}" method="post">
+                                                        @csrf
+                                                        <a href="#">Disetujui</a>
+                                                        <a href="#">Ditolak</a>
+                                                        @if ($b->status == 'Disetujui' || $b->status == 'Ditolak')
+                                                            <a href="#">Menunggu</a>
+                                                        @endif
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{-- <div class="my-2">
                                             <div class="btn-group" role="group"
                                                 aria-label="Button group with nested dropdown">
                                                 <form action="{{ route('transaksi.store', $b->id) }}" method="POST"
@@ -98,7 +116,7 @@
                                                     </div>
                                                 </form>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </td>
 
                                     <div class="modal fade" id="viewBuktiModal-{{ $b->id }}" tabindex="-1"

@@ -26,7 +26,6 @@ class LandingController extends Controller
         }
 
         $kamar = $query->get()->groupBy('id');
-
         return view('welcome', compact('kamar'));
     }
 
