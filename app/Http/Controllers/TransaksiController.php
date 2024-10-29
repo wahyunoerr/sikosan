@@ -16,7 +16,6 @@ class TransaksiController extends Controller
             ->join('tbl_booking', 'tbl_transaksi.booking_id', '=', 'tbl_transaksi.id')
             ->select('tbl_transaksi.*', 'tbl_booking.*')
             ->get();
-        // dd();
         return view('pages.transaksi.index', compact('transaksi'));
     }
 

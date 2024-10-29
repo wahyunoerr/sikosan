@@ -64,6 +64,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::prefix('booking')->group(function () {
             Route::get('/', 'index');
             Route::get('/edit/{id}', 'edit')->name('booking.edit');
+            Route::get('/statusBoking/{id}/{status}', 'statusBoking')->name('booking.status');
             Route::post('/update/{id}', 'update')->name('booking.update');
             Route::delete('/delete/{id}', 'destroy')->name('booking.delete');
         });

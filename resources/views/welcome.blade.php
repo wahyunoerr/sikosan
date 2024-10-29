@@ -77,7 +77,7 @@
                                                 <div class="d-flex justify-content-between flex-lg-wrap">
                                                     <p class="text-dark fs-5 fw-bold mb-0">Rp.
                                                         {{ number_format($images[0]->harga) }}</p>
-                                                    @if ($images[0] == 'Belum Dihuni')
+                                                    @if ($images[0]->status == 'Belum Dihuni')
                                                         <a href="{{ route('landing.getKamar', $images[0]->id) }}"
                                                             class="btn border border-secondary rounded-pill px-3 text-primary">
                                                             <i class="fa fa-ticket-alt me-2 text-primary"></i> Booking

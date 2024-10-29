@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('kamar_id');
             $table->string('harga_kamar_booking');
             $table->string('bukti_bayar');
-            $table->enum('status', ['Menunggu', 'Disetujui', 'Ditolak'])->default('Menunggu');
+            $table->enum('status', ['Menunggu', 'Disetujui', 'Ditolak'])->default('Menunggu')->change();
             $table->timestamps();
 
             $table->foreign('customer_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

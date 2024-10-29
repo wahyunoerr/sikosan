@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class BookingController extends Controller
 {
@@ -27,27 +28,34 @@ class BookingController extends Controller
         return view('pages.booking.index', compact('booking'));
     }
 
-    function statusBoking($id)
+    function statusBoking($id, $status)
     {
-        $updateStatus = DB::table('tbl_booking')->where('id', $id)->first();
 
-        if ($updateStatus->status == 'Disetujui') {
-            DB::table('tbl_booking')->update([
-                'status' => 'Disetujui'
+        $booking = DB::table('tbl_booking')->where('id', $id)->first();
+
+        if ($status === 'Disetujui') {
+            $kamarStatus = 'Sudah Dihuni';
+            DB::table('tbl_transaksi')->insert([
+                'booking_id' => $booking->id,
+                'total_bayar' => $booking->harga_kamar_booking,
+                'created_at' => now(),
+                'updated_at' => now(),
             ]);
-        } elseif ($updateStatus->status == 'Ditolak') {
-            DB::table('tbl_booking')->update([
-                'status' => 'Ditolak'
-            ]);
-        } elseif ($updateStatus->status == 'Menunggu') {
-            DB::table('tbl_booking')->update([
-                'status' => 'Menunggu'
-            ]);
+        } elseif ($status === 'Ditolak' || $status === 'Menunggu') {
+            $kamarStatus = 'Belum Dihuni';
+        } else {
+            return redirect()->back()->with('error', 'Data tidak valid');
         }
 
-        return view('pages.booking.index', compact('updateStatus'));
-    }
+        DB::table('tbl_booking')->where('id', $id)->update([
+            'status' => $status
+        ]);
+        DB::table('tbl_kamar')->where('id', $id)->update([
+            'status' => $kamarStatus
+        ]);
 
+        return redirect('booking')->with('success', 'Status Berhasil Diubah');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -125,6 +133,14 @@ class BookingController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $image = DB::table('tbl_booking')->where('id', $id)->get();
+
+        foreach ($image as $i) {
+            Storage::disk('public')->delete('upload/bukti/' . $i->bukti_bayar);
+        }
+
+        DB::table('tbl_booking')->where('id', $id)->delete();
+
+        return redirect()->back()->with('success', 'Data berhasil dihapus!');
     }
 }

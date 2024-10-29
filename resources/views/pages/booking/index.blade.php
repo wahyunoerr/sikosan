@@ -71,52 +71,17 @@
                                                     </span>
                                                 </button>
                                                 <div class="dropstart-content dropdown-content">
-                                                    <form action="{{ route('transaksi.store', $b->id) }}" method="post">
-                                                        @csrf
-                                                        <a href="#">Disetujui</a>
-                                                        <a href="#">Ditolak</a>
-                                                        @if ($b->status == 'Disetujui' || $b->status == 'Ditolak')
-                                                            <a href="#">Menunggu</a>
-                                                        @endif
-                                                    </form>
+                                                    <a
+                                                        href="{{ route('booking.status', ['id' => $b->id, 'status' => 'Disetujui']) }}">Disetujui</a>
+                                                    <a
+                                                        href="{{ route('booking.status', ['id' => $b->id, 'status' => 'Ditolak']) }}">Ditolak</a>
+                                                    @if ($b->status == 'Disetujui' || $b->status == 'Ditolak')
+                                                        <a
+                                                            href="{{ route('booking.status', ['id' => $b->id, 'status' => 'Menunggu']) }}">Menunggu</a>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
-                                        {{-- <div class="my-2">
-                                            <div class="btn-group" role="group"
-                                                aria-label="Button group with nested dropdown">
-                                                <form action="{{ route('transaksi.store', $b->id) }}" method="POST"
-                                                    enctype="multipart/form-data"
-                                                    id="formActions-status-{{ $b->id }}">
-                                                    @csrf
-                                                    <input type="hidden" name="action" id="action-{{ $b->id }}">
-
-                                                    <div class="btn-group" role="group">
-                                                        <button class="btn btn-primary btn-sm dropdown-toggle"
-                                                            id="btnGroupDrop1" type="button" data-bs-toggle="dropdown"
-                                                            aria-haspopup="true" aria-expanded="false">
-                                                            Ubah Status
-                                                        </button>
-                                                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                                            <button class="dropdown-item" type="button"
-                                                                onclick="event.preventDefault(); document.getElementById('action-{{ $b->id }}').value='setujui'; document.getElementById('formActions-status-{{ $b->id }}').submit();">
-                                                                Setujui Booking
-                                                            </button>
-                                                            <button class="dropdown-item" type="button"
-                                                                onclick="event.preventDefault(); document.getElementById('action-{{ $b->id }}').value='tolak'; document.getElementById('formActions-status-{{ $b->id }}').submit();">
-                                                                Tolak Booking
-                                                            </button>
-                                                            @if ($b->status == 'Disetujui' || $b->status == 'Ditolak')
-                                                                <button class="dropdown-item" type="button"
-                                                                    onclick="event.preventDefault(); document.getElementById('action-{{ $b->id }}').value='menunggu'; document.getElementById('formActions-status-{{ $b->id }}').submit();">
-                                                                    Kembalikan Menunggu
-                                                                </button>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div> --}}
                                     </td>
 
                                     <div class="modal fade" id="viewBuktiModal-{{ $b->id }}" tabindex="-1"
