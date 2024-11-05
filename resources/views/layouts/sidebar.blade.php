@@ -29,7 +29,7 @@
                         <ul class="sidebar-submenu">
                             <li><a href="/kamar">Kamar</a></li>
                             <li><a href="/rekening">Info Rekening</a></li>
-                            <li><a href="#">Pengguna</a></li>
+                            <li><a href="/pengguna">Pengguna</a></li>
                         </ul>
                     </li>
                     <li class="sidebar-list"></i><a class="sidebar-link sidebar-title" href="javascript:void(0)"><i

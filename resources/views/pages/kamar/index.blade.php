@@ -28,7 +28,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $d->nomor }}</td>
-                                    <td>Rp. {{ number_format($d->harga) }}</td>
+                                    <td>Rp. {{ number_format($d->harga, 2, ',', '.') }}</td>
                                     <td>{{ $d->lantai }}</td>
                                     <td>
                                         @if ($d->status == 'Sudah Dihuni')

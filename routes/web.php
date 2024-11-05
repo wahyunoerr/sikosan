@@ -5,6 +5,7 @@ use App\Http\Controllers\KamarController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\RekeningController;
 use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -75,6 +76,13 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
             Route::get('/', 'index');
             Route::post('/store/{id}', 'store')->name('transaksi.store');
             Route::get('/invoice/{id}', 'invoice')->name('transakci.invoice');
+        });
+    });
+
+    Route::controller(UserController::class)->group(function () {
+        Route::prefix('pengguna')->group(function () {
+            Route::get('/', 'index');
+            Route::post('/orders', 'store');
         });
     });
 });
