@@ -36,6 +36,7 @@
                                 data-feather="list"></i><span>Booking Data</span></a>
                         <ul class="sidebar-submenu">
                             <li><a href="/booking">Booking</a></li>
+                            <li><a href="/transaksi">Transaksi</a></li>
                         </ul>
                     </li>
                 </ul>

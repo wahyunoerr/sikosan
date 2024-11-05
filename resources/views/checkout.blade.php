@@ -68,7 +68,7 @@
                             <div class="rounded">
                                 <a href="#">
                                     <img src="{{ $images->isNotEmpty() ? Storage::disk('public')->url('upload/image/' . $images->first()->nameImage) : 'path/to/default/image.jpg' }}"
-                                        class="rounded" alt="Image" id="main-image" />
+                                        class="rounded" alt="Image" id="main-image" width="200" height="auto" />
                                 </a>
                             </div>
                             <div class="d-flex justify-content-start gap-3 my-3">
@@ -76,7 +76,7 @@
                                 @foreach ($images as $image)
                                     <img src="{{ Storage::disk('public')->url('upload/image/' . $image->nameImage) }}"
                                         class="img-fluid rounded border small-image" alt="Image" width="100"
-                                        style="cursor: pointer" />
+                                        height="100" style="cursor: pointer" />
                                 @endforeach
                             </div>
                         </div>
@@ -254,3 +254,18 @@
         </div>
     </div>
 @endsection
+
+@push('js-detail')
+    <script>
+        const mainImage = document.getElementById("main-image");
+        const smallImage = document.querySelectorAll(".small-image");
+
+        mainImage.src = smallImage[0].src;
+
+        smallImage.forEach((img) => {
+            img.addEventListener("click", function() {
+                mainImage.src = this.src;
+            });
+        });
+    </script>
+@endpush

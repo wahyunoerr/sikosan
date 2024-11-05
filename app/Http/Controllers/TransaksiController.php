@@ -14,7 +14,8 @@ class TransaksiController extends Controller
     {
         $transaksi = DB::table('tbl_transaksi')
             ->join('tbl_booking', 'tbl_transaksi.booking_id', '=', 'tbl_transaksi.id')
-            ->select('tbl_transaksi.*', 'tbl_booking.*')
+            ->leftJoin('users', 'tbl_booking.customer_id', '=', 'users.id')
+            ->select('tbl_transaksi.*', 'tbl_booking.*', 'users.name AS nama_pelanggan')
             ->get();
         return view('pages.transaksi.index', compact('transaksi'));
     }
@@ -35,7 +36,8 @@ class TransaksiController extends Controller
         if ($action === 'setujui') {
             DB::table('tbl_transaksi')->insert([
                 'booking_id' => $booking->id,
-                'total_bayar' => $booking->harga_kamar_booking
+                'total_bayar' => $booking->harga_kamar_booking,
+                'created_at' => now(),
             ]);
 
             DB::table('tbl_booking')->where('id', $id)->update([
@@ -65,8 +67,16 @@ class TransaksiController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function invoice(string $id)
     {
-        //
+        $invoice = DB::table('tbl_transaksi')
+            ->join('tbl_booking', 'tbl_transaksi.booking_id', '=', 'tbl_booking.id')
+            ->leftJoin('users', 'tbl_booking.customer_id', '=', 'users.id')
+            ->leftJoin('tbl_kamar', 'tbl_booking.kamar_id', '=', 'tbl_kamar.id')
+            ->select('tbl_transaksi.*', 'tbl_booking.status AS status_booking', 'tbl_booking.bukti_bayar', 'users.name AS nama_pelanggan', 'users.email', 'tbl_kamar.*')
+            ->where('tbl_transaksi.id', $id)
+            ->first();
+
+        return view('pages.transaksi.invoice', compact('invoice'));
     }
 }

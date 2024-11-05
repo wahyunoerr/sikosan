@@ -39,6 +39,7 @@
 
     <!-- JavaScript Libraries -->
     @include('layouts.landing.script')
+    @stack('js-detail')
 </body>
 
 </html>

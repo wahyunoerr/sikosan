@@ -74,6 +74,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::prefix('transaksi')->group(function () {
             Route::get('/', 'index');
             Route::post('/store/{id}', 'store')->name('transaksi.store');
+            Route::get('/invoice/{id}', 'invoice')->name('transakci.invoice');
         });
     });
 });
