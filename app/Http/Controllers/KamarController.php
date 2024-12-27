@@ -35,7 +35,6 @@ class KamarController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
 
         $validateKamar = $request->validate([
             'nomorKamar' => 'required',
@@ -98,15 +97,20 @@ class KamarController extends Controller
     public function edit(string $id)
     {
         $kamarId = DB::table('tbl_kamar')->where('id', $id)->first();
-        return view('pages.kamar.edit', compact('kamarId'));
+
+        $fotoKamar = DB::table('tbl_upload_file_image')
+            ->where('kamar_id', $id)
+            ->get();
+
+        if (!$kamarId) {
+            return redirect()->route('kamar.index')->with('error', 'Data tidak ditemukan.');
+        }
+
+        return view('pages.kamar.edit', compact('kamarId', 'fotoKamar'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
-
         $validateKamar = $request->validate([
             'nomorKamar' => 'required',
             'hargaKamar' => 'required',
@@ -114,19 +118,23 @@ class KamarController extends Controller
             'status' => 'required|in:Sudah Dihuni,Belum Dihuni',
             'fasilitas' => 'required',
             'fotoKamar' => 'required|array',
-            'fotoKamar.*' => 'required|mimes:jpg,jpeg,png,jfif',
+            'fotoKamar.*' => 'mimes:jpg,jpeg,png,jfif',
         ]);
 
-        $kamarId = DB::table('tbl_kamar')->where('id', $id)->update([
-            'nomor'     => $validateKamar['nomorKamar'],
-            'harga'     => $validateKamar['hargaKamar'],
-            'lantai'    => $validateKamar['lantaiKamar'],
-            'status'    => $validateKamar['status'],
+        DB::table('tbl_kamar')->where('id', $id)->update([
+            'nomor' => $validateKamar['nomorKamar'],
+            'harga' => $validateKamar['hargaKamar'],
+            'lantai' => $validateKamar['lantaiKamar'],
+            'status' => $validateKamar['status'],
             'fasilitas' => $validateKamar['fasilitas'],
-            'created_at' => now(),
-            'updated_at' => now()
+            'updated_at' => now(),
         ]);
 
+        $oldImages = DB::table('tbl_upload_file_image')->where('kamar_id', $id)->get();
+        foreach ($oldImages as $oldImage) {
+            Storage::disk('public')->delete('upload/image/' . $oldImage->nameImage);
+        }
+        DB::table('tbl_upload_file_image')->where('kamar_id', $id)->delete();
 
         if ($request->hasFile('fotoKamar')) {
             foreach ($request->file('fotoKamar') as $file) {
@@ -134,16 +142,18 @@ class KamarController extends Controller
                     $imageName = time() . '_' . $file->getClientOriginalName();
                     $file->storeAs('upload/image/', $imageName, 'public');
 
-                    DB::table('tbl_upload_file_image')->where('id', $kamarId)->update([
+                    DB::table('tbl_upload_file_image')->insert([
                         'nameImage' => $imageName,
-                        'kamar_id'  => $kamarId,
+                        'kamar_id' => $id,
                     ]);
                 }
             }
         }
 
-        return redirect('kamar')->with('success', 'Data kamar berhasil diubah');
+        return redirect('/kamar')->with('success', 'Data kamar berhasil diubah.');
     }
+
+
 
     /**
      * Remove the specified resource from storage.

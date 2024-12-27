@@ -96,14 +96,27 @@
                     <div class="row">
                         <div class="col">
                             <div class="mb-3">
-                                <label>Foto Kamar</label>
-                                <input type="file" class="form-control @error('fotoKamar[]') is-invalid @enderror"
-                                    name="fotoKamar[]" multiple>
-
-                                @error('fotoKamar[]')
-                                    <div class="invalid-feedback">
-                                        <strong>{{ $message }}</strong>
-                                    </div>
+                                <label>Foto Saat Ini:</label>
+                                <div class="row">
+                                    @foreach ($fotoKamar as $foto)
+                                        <div class="col-md-3">
+                                            <img src="{{ asset('storage/upload/image/' . $foto->nameImage) }}"
+                                                alt="Foto Kamar" class="img-fluid img-thumbnail"
+                                                style="width: 100%; height: 200px; object-fit: cover;">
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label>Foto Baru</label>
+                                <input type="file" name="fotoKamar[]" multiple
+                                    class="form-control @error('fotoKamar.*') is-invalid @enderror">
+                                @error('fotoKamar.*')
+                                    <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>

@@ -95,8 +95,12 @@
                         <div class="col">
                             <div class="mb-3">
                                 <label>Foto Kamar</label>
-                                <input type="file" class="form-control @error('fotoKamar[]') is-invalid @enderror"
-                                    name="fotoKamar[]" multiple>
+                                <div id="drop-area" class="border border-primary p-3 text-center">
+                                    <p>Drag & Drop your images here or click to select files</p>
+                                    <input type="file" id="fileElem"
+                                        class="form-control d-none @error('fotoKamar[]') is-invalid @enderror"
+                                        name="fotoKamar[]" multiple onchange="previewImages(event)">
+                                </div>
 
                                 @error('fotoKamar[]')
                                     <div class="invalid-feedback">
@@ -104,6 +108,11 @@
                                     </div>
                                 @enderror
                             </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div id="imagePreview" class="d-flex flex-wrap"></div>
                         </div>
                     </div>
                     <div class="row">
@@ -118,4 +127,52 @@
             </div>
         </div>
     </div>
+    <script>
+        const dropArea = document.getElementById('drop-area');
+        const fileInput = document.getElementById('fileElem');
+
+        dropArea.addEventListener('dragover', (event) => {
+            event.preventDefault();
+            dropArea.classList.add('bg-light');
+        });
+
+        dropArea.addEventListener('dragleave', () => {
+            dropArea.classList.remove('bg-light');
+        });
+
+        dropArea.addEventListener('drop', (event) => {
+            event.preventDefault();
+            dropArea.classList.remove('bg-light');
+            const files = event.dataTransfer.files;
+            fileInput.files = files;
+            previewImages({
+                target: {
+                    files
+                }
+            });
+        });
+
+        dropArea.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        function previewImages(event) {
+            const files = event.target.files;
+            const previewContainer = document.getElementById('imagePreview');
+            previewContainer.innerHTML = '';
+
+            Array.from(files).forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.classList.add('img-thumbnail', 'm-2');
+                    img.style.width = '150px';
+                    img.style.height = '150px';
+                    previewContainer.appendChild(img);
+                }
+                reader.readAsDataURL(file);
+            });
+        }
+    </script>
 @endsection
