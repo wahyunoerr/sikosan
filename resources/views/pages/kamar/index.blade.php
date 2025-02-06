@@ -20,6 +20,7 @@
                                 <th>Status</th>
                                 <th>Foto Kamar</th>
                                 <th>Fasilitas</th>
+                                <th>Alamat</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -45,6 +46,7 @@
                                                 class="icofont icofont-file-image"></i></a>
                                     </td>
                                     <td>{{ $d->fasilitas }}</td>
+                                    <td>{{ $d->alamat }}</td>
                                     <td>
                                         <ul class="action">
                                             <li class="edit"> <a href="{{ route('kamar.edit', $d->id) }}"><i

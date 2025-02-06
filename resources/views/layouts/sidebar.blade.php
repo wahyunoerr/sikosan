@@ -39,6 +39,11 @@
                             <li><a href="/transaksi">Transaksi</a></li>
                         </ul>
                     </li>
+                    <li class="sidebar-list {{ request()->is('rating*') ? 'active' : '' }}">
+                        <a class="sidebar-link sidebar-title" href="{{ route('rating.index') }}">
+                            <i class="fa fa-star"></i> <span>Rating</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>

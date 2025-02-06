@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tbl_kamar', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->string('nomor', 100);
-            $table->string('harga', 100);
-            $table->enum('lantai', ['Lantai 1', 'Lantai 2', 'Lantai 3']);
-            $table->enum('status', ['Sudah Dihuni', 'Belum Dihuni']);
-            $table->string('fasilitas', 100);
-            $table->string('alamat', 100);
+            $table->foreignId('kamar_id')->constrained('tbl_kamar')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->decimal('rating', 3, 2);
+            $table->text('review');
+            $table->enum('status', ['active', 'deactive']);
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tbl_kamar');
+        Schema::dropIfExists('reviews');
     }
 };

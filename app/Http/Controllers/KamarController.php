@@ -44,6 +44,7 @@ class KamarController extends Controller
             'fasilitas' => 'required',
             'fotoKamar' => 'required|array',
             'fotoKamar.*' => 'required|mimes:jpg,jpeg,png,jfif',
+            'alamat' => 'required',
         ]);
 
         $kamarId = DB::table('tbl_kamar')->insertGetId([
@@ -52,6 +53,7 @@ class KamarController extends Controller
             'lantai'    => $validateKamar['lantaiKamar'],
             'status'    => $validateKamar['status'],
             'fasilitas' => $validateKamar['fasilitas'],
+            'alamat'    => $validateKamar['alamat'],
             'created_at' => now(),
             'updated_at' => now()
         ]);
@@ -117,8 +119,9 @@ class KamarController extends Controller
             'lantaiKamar' => 'required|in:Lantai 1,Lantai 2,Lantai 3',
             'status' => 'required|in:Sudah Dihuni,Belum Dihuni',
             'fasilitas' => 'required',
-            'fotoKamar' => 'required|array',
+            'fotoKamar' => 'array',
             'fotoKamar.*' => 'mimes:jpg,jpeg,png,jfif',
+            'alamat' => 'required',
         ]);
 
         DB::table('tbl_kamar')->where('id', $id)->update([
@@ -127,16 +130,17 @@ class KamarController extends Controller
             'lantai' => $validateKamar['lantaiKamar'],
             'status' => $validateKamar['status'],
             'fasilitas' => $validateKamar['fasilitas'],
+            'alamat' => $validateKamar['alamat'],
             'updated_at' => now(),
         ]);
 
-        $oldImages = DB::table('tbl_upload_file_image')->where('kamar_id', $id)->get();
-        foreach ($oldImages as $oldImage) {
-            Storage::disk('public')->delete('upload/image/' . $oldImage->nameImage);
-        }
-        DB::table('tbl_upload_file_image')->where('kamar_id', $id)->delete();
-
         if ($request->hasFile('fotoKamar')) {
+            $oldImages = DB::table('tbl_upload_file_image')->where('kamar_id', $id)->get();
+            foreach ($oldImages as $oldImage) {
+                Storage::disk('public')->delete('upload/image/' . $oldImage->nameImage);
+            }
+            DB::table('tbl_upload_file_image')->where('kamar_id', $id)->delete();
+
             foreach ($request->file('fotoKamar') as $file) {
                 if ($file->isValid()) {
                     $imageName = time() . '_' . $file->getClientOriginalName();
@@ -152,8 +156,6 @@ class KamarController extends Controller
 
         return redirect('/kamar')->with('success', 'Data kamar berhasil diubah.');
     }
-
-
 
     /**
      * Remove the specified resource from storage.

@@ -14,7 +14,12 @@ class LandingController extends Controller
     {
         $query = DB::table('tbl_kamar')
             ->join('tbl_upload_file_image', 'tbl_kamar.id', '=', 'tbl_upload_file_image.kamar_id')
-            ->select('tbl_kamar.*', 'tbl_upload_file_image.nameImage');
+            ->leftJoin('tbl_booking', function ($join) {
+                $join->on('tbl_kamar.id', '=', 'tbl_booking.kamar_id')
+                    ->where('tbl_booking.status', '=', 'Menunggu')
+                    ->where('tbl_booking.customer_id', '=', auth()->id());
+            })
+            ->select('tbl_kamar.*', 'tbl_upload_file_image.nameImage', 'tbl_booking.customer_id as booked_by_user', 'tbl_booking.status as booking_status');
 
         if ($request->has('search') && $request->input('search') != '') {
             $searchTerm = $request->input('search');
@@ -65,9 +70,49 @@ class LandingController extends Controller
 
         $rekening = DB::table('tbl_rekening')->get();
 
-        return view('checkout', compact('kamar', 'images', 'rekening'));
+        $reviews = DB::table('reviews')
+            ->where('kamar_id', $id)
+            ->get();
+
+        $totalStars = DB::table('reviews')->sum('rating');
+        $totalReviews = DB::table('reviews')->where('kamar_id', $id)->count();
+
+        $averageRating = $totalReviews > 0 ? $totalStars / $totalReviews : 0;
+        $requiredReviewsForFiveStar = max(500, ceil(($totalReviews * 5 - $totalStars) / (5 - $averageRating)));
+
+        $userHasRated = $reviews->where('user_id', auth()->id())->isNotEmpty();
+
+        $kamar = (array) $kamar;
+        $kamar['reviews'] = $reviews;
+
+        $kamar = (object) $kamar;
+
+        return view('checkout', compact('kamar', 'images', 'rekening', 'reviews', 'averageRating', 'totalStars', 'totalReviews', 'requiredReviewsForFiveStar', 'userHasRated'));
     }
 
+    /**
+     * Store a newly created review in storage.
+     */
+    public function storeReview(Request $request)
+    {
+        $request->validate([
+            'kamar_id' => 'required|exists:tbl_kamar,id',
+            'rating' => 'required|integer|min:1|max:5',
+            'review' => 'nullable|string|max:255',
+        ]);
+
+        DB::table('reviews')->insert([
+            'kamar_id' => $request->kamar_id,
+            'user_id' => auth()->id(),
+            'rating' => $request->rating,
+            'review' => $request->review,
+            'status' => 'active',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        return redirect()->back()->with('status', 'Review submitted successfully.');
+    }
 
     /**
      * Update the specified resource in storage.

@@ -4,6 +4,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\RekeningController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -44,7 +45,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
             Route::get('/add', 'create')->name('kamar.add');
             Route::get('/edit/{id}', 'edit')->name('kamar.edit');
             Route::post('/save', 'store')->name('kamar.save');
-            Route::post('/update/{id}', 'update')->name('kamar.update');
+            Route::put('/update/{id}', 'update')->name('kamar.update');
             Route::get('/foto/{id}', 'showImage')->name('kamar.image');
             Route::delete('/delete/{id}', 'destroy')->name('kamar.delete');
         });
@@ -56,7 +57,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
             Route::get('/edit/{id}', 'edit')->name('rekening.edit');
             Route::post('/save', 'store')->name('rekening.save');
             Route::post('/update/{id}', 'update')->name('rekening.update');
-            Route::post('/save', 'store')->name('rekening.save');
             Route::delete('/delete/{id}', 'destroy')->name('rekening.delete');
         });
     });
@@ -85,6 +85,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
             Route::post('/orders', 'store');
         });
     });
+
+    Route::controller(ReviewController::class)->group(function () {
+        Route::prefix('rating')->group(function () {
+            Route::get('/', 'index')->name('rating.index');
+            Route::post('/save', 'store')->name('rating.save');
+            Route::put('/update/{id}', 'update')->name('rating.update');
+            Route::delete('/delete/{id}', 'destroy')->name('rating.delete');
+            Route::get('/toggleStatus/{id}', 'toggleStatus')->name('rating.toggleStatus');
+        });
+    });
 });
 
 Route::middleware(['auth', 'role:customer|admin'])->group(function () {
@@ -93,5 +103,9 @@ Route::middleware(['auth', 'role:customer|admin'])->group(function () {
             Route::get('/customer', 'customerBooking')->name('booking.customer');
             Route::post('/save', 'store')->name('booking.save');
         });
+    });
+
+    Route::controller(LandingController::class)->group(function () {
+        Route::post('/reviews/store', 'storeReview')->name('reviews.store');
     });
 });

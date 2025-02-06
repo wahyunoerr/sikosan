@@ -101,7 +101,7 @@ class BookingController extends Controller
             'updated_at' => now(),
         ]);
 
-        return redirect('booking')->withSuccess('Anda berhasil melakukan booking!');
+        return redirect('booking/customer')->withSuccess('Anda berhasil melakukan booking!');
     }
 
     /**

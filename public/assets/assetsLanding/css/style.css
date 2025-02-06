@@ -72,6 +72,18 @@
     color: var(--bs-white) !important;
 }
 
+.btn-warning {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+@media (max-width: 992px) {
+    .btn-warning {
+        margin-top: 1rem;
+    }
+}
+
 /*** Topbar Start ***/
 .fixed-top {
     transition: 0.5s;

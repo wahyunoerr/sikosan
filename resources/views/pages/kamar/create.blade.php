@@ -35,6 +35,19 @@
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label>Alamat Kamar</label>
+                                <textarea class="form-control @error('alamat') is-invalid @enderror" placeholder="Alamat Kamar" name="alamat">{{ old('alamat') }}</textarea>
+                                @error('alamat')
+                                    <div class="invalid-feedback">
+                                        <strong>{{ $message }}</strong>
+                                    </div>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label>Berada di Lantai</label>
