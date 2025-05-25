@@ -177,4 +177,47 @@ class KamarController extends Controller
 
         return redirect()->back()->with('success', 'Data berhasil dihapus.');
     }
+
+    public function riwayat()
+    {
+        $riwayat = DB::table('tbl_pindah')
+            ->join('tbl_booking', 'tbl_pindah.booking_id', '=', 'tbl_booking.id')
+            ->join('users', 'tbl_booking.customer_id', '=', 'users.id')
+            ->join('tbl_kamar as kamar_lama', 'tbl_pindah.kamar_lama_id', '=', 'kamar_lama.id')
+            ->select(
+                'tbl_pindah.*',
+                'users.name as nama_customer',
+                'kamar_lama.nomor as nomor_kamar_lama',
+                'tbl_booking.customer_id'
+            )
+            ->orderBy('tbl_pindah.tanggal_pindah', 'desc')
+            ->get();
+        return view('pages.kamar.riwayat_kamar', compact('riwayat'));
+    }
+
+
+    public function laporanKosong()
+    {
+        $kamar_kosong = DB::table('tbl_kamar')
+            ->where('status', 'Belum Dihuni')
+            ->get();
+
+        $histori = DB::table('tbl_pindah')
+            ->join('tbl_booking', 'tbl_pindah.booking_id', '=', 'tbl_booking.id')
+            ->join('users', 'tbl_booking.customer_id', '=', 'users.id')
+            ->join('tbl_kamar as kamar_lama', 'tbl_pindah.kamar_lama_id', '=', 'kamar_lama.id')
+            ->select(
+                'tbl_pindah.*',
+                'users.name as nama_customer',
+                'kamar_lama.nomor as nomor_kamar_lama',
+                'tbl_booking.tanggal_booking',
+                'tbl_pindah.tanggal_pindah'
+            )
+            ->whereIn('tbl_pindah.kamar_lama_id', $kamar_kosong->pluck('id'))
+            ->orderBy('tbl_pindah.tanggal_pindah', 'desc')
+            ->get()
+            ->groupBy('kamar_lama_id');
+
+        return view('pages.kamar.laporan_kosong', compact('kamar_kosong', 'histori'));
+    }
 }

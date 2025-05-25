@@ -47,11 +47,6 @@
                         data-bs-toggle="modal" data-bs-target="#searchModal">
                         <i class="fas fa-search text-primary"></i>
                     </button>
-                    @auth
-                        <a href="#" class="my-auto" style="text-transform: capitalize">
-                            <i class="fas fa-user fa-2x me-2"></i>{{ Auth::user()->name }}
-                        </a>
-                    @endauth
                 </div>
             </div>
         </nav>

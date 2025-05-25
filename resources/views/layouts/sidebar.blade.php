@@ -44,6 +44,23 @@
                             <i class="fa fa-star"></i> <span>Rating</span>
                         </a>
                     </li>
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title" href="javascript:void(0)"><i
+                                data-feather="log-out"></i><span>Checkout/Pindah</span></a>
+                        <ul class="sidebar-submenu">
+                            <li><a href="/pindah">Data Checkout/Pindah</a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title" href="{{ route('kamar.riwayat') }}">
+                            <i class="fa fa-history"></i> <span>Riwayat Kamar</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-list">
+                        <a class="sidebar-link sidebar-title" href="{{ route('kamar.laporan.kosong') }}">
+                            <i class="fa fa-bed"></i> <span>Laporan Kamar Kosong</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>

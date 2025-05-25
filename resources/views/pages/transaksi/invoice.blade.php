@@ -96,7 +96,7 @@
                             <div class="col-md-4">
                                 <form class="text-center invo-pal mt-2">
                                     <input type="image"
-                                        src="{{ Storage::disk('public')->url('upload/bukti/' . $invoice->bukti_bayar) }} "
+                                        src="{{ Storage::disk('public')->url('upload/bukti/' . $invoice->bukti_dp) }} "
                                         name="submit" alt="bukti-bayar" width="100" height="150">
                                 </form>
                             </div>

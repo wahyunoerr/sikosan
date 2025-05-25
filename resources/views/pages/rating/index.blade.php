@@ -47,7 +47,8 @@
                                             <button type="submit" class="btn btn-sm btn-danger"
                                                 data-confirm-delete="true">Delete</button>
                                         </form>
-                                        <a href="{{ route('rating.toggleStatus', $d->id) }}" class="btn btn-sm btn-primary">
+                                        <a href="{{ route('rating.toggleStatus', $d->id) }}" class="btn btn-sm btn-primary"
+                                            onclick="event.preventDefault(); toggleStatus('{{ route('rating.toggleStatus', $d->id) }}');">
                                             Toggle Status
                                         </a>
                                     </td>
@@ -70,4 +71,23 @@
             color: orange;
         }
     </style>
+@endpush
+@push('scripts')
+    <script>
+        function toggleStatus(url) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You are about to change the status!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, change it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = url;
+                }
+            })
+        }
+    </script>
 @endpush

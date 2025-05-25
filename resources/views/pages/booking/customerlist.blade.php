@@ -17,8 +17,9 @@
                                             <th scope="col">Nomor Kamar Dibooking</th>
                                             <th scope="col">Lantai Kamar Dibooking</th>
                                             <th scope="col">Harga Kamar Dibooking</th>
-                                            <th scope="col">Bukti Pembayaran</th>
+                                            <th scope="col">Keterangan</th>
                                             <th scope="col">Status Booking</th>
+                                            <th scope="col">Status Pelunasan</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -29,13 +30,13 @@
                                                 <td>{{ $b->lantai }}</td>
                                                 <td>Rp. {{ number_format($b->harga_kamar_booking) }}</td>
                                                 <td>
-                                                    <a href="#" data-bs-toggle="modal"
-                                                        data-original-title="Lihat Bukti Booking"
-                                                        data-bs-target="#viewBuktiModal-{{ $b->id }}">
-                                                        <img src="{{ Storage::disk('public')->url('upload/bukti/' . $b->bukti_bayar) }}"
-                                                            class="img-fluid rounded shadow-lg" alt="img-bukti"
-                                                            width="50"></img>
-                                                    </a>
+                                                    @if ($b->status == 'Ditolak')
+                                                        {{ $b->keterangan }}
+                                                    @elseif ($b->status == 'Disetujui')
+                                                        {{ $b->keterangan }}
+                                                    @else
+                                                        -
+                                                    @endif
                                                 </td>
                                                 <td>
                                                     @if ($b->status == 'Menunggu')
@@ -47,6 +48,13 @@
                                                     @else
                                                         <span
                                                             class="badge px-3 py-2 rounded-pill bg-success">{{ $b->status }}</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if ($b->is_paid)
+                                                        <span class="badge bg-success">Lunas</span>
+                                                    @else
+                                                        <span class="badge bg-warning">Belum Lunas</span>
                                                     @endif
                                                 </td>
 
@@ -65,7 +73,7 @@
                                                             </div>
                                                             <div class="modal-body">
                                                                 <div class="img-fluid d-flex justify-content-center">
-                                                                    <img src="{{ Storage::disk('public')->url('upload/bukti/' . $b->bukti_bayar) }}"
+                                                                    <img src="{{ Storage::disk('public')->url('upload/bukti/' . $b->bukti_dp) }}"
                                                                         alt="modal-image-bukti" width="300"
                                                                         class="shadow">
                                                                 </div>

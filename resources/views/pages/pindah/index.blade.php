@@ -1,41 +1,46 @@
 @extends('layouts.app')
-@section('title', 'Data Pengguna')
+@section('title', 'Data Checkout/Pindah')
 @section('content')
     <div class="col-md-12 project-list">
         <div class="card">
             <div class="card-header pb-0">
                 <h3>DataTable @yield('title')</h3>
+                <a class="btn btn-outline-primary-2x float-right" href="{{ route('pindah.create') }}">
+                    <i class="fa fa-plus"></i> Checkout/Pindah</a>
             </div>
             <div class="card-body">
+                @if (session('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                @endif
                 <div class="table-responsive theme-scrollbar">
                     <table class="display" id="basic-1">
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Nama Pengguna</th>
-                                <th>Email</th>
-                                <th>Role</th>
+                                <th>Booking ID</th>
+                                <th>Kamar Lama</th>
+                                <th>Tanggal Pindah</th>
+                                <th>Alasan</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($user as $u)
+                            @foreach ($pindah as $d)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $u->name }}</td>
-                                    <td>{{ $u->email }}</td>
-                                    <td>{{ $u->roles->first()->name }}</td>
+                                    <td>{{ $d->booking_id }}</td>
+                                    <td>{{ $d->nomor_lama }}</td>
+                                    <td>{{ $d->tanggal_pindah }}</td>
+                                    <td>{{ $d->alasan }}</td>
                                     <td>
                                         <ul class="action">
-                                            <li class="edit"> <a href="{{ route('pengguna.edit', $u->id) }}"><i
-                                                        class="icon-pencil-alt"></i></a></li>
                                             <li class="delete">
-                                                <form action="{{ route('pengguna.delete', $u->id) }}" method="POST"
-                                                    onsubmit="return confirm('Are you sure?');">
+                                                <form action="{{ route('pindah.delete', $d->id) }}" method="POST"
+                                                    onsubmit="return confirm('Yakin hapus data?')">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <a href="{{ route('pengguna.delete', $u->id) }}"
-                                                        data-confirm-delete="true"><i class="icon-trash"></i></a>
+                                                    <a href="{{ route('pindah.delete', $d->id) }}"
+                                                        class="btn btn-danger btn-sm" data-confirm-delete="true">Hapus</a>
                                                 </form>
                                             </li>
                                         </ul>

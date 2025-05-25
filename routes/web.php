@@ -3,6 +3,7 @@
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\KamarController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\PindahController;
 use App\Http\Controllers\RekeningController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\TransaksiController;
@@ -48,6 +49,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
             Route::put('/update/{id}', 'update')->name('kamar.update');
             Route::get('/foto/{id}', 'showImage')->name('kamar.image');
             Route::delete('/delete/{id}', 'destroy')->name('kamar.delete');
+            Route::get('/riwayat', 'riwayat')->name('kamar.riwayat');
+            Route::get('/laporan-kosong', 'laporanKosong')->name('kamar.laporan.kosong');
         });
     });
 
@@ -63,10 +66,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     Route::controller(BookingController::class)->group(function () {
         Route::prefix('booking')->group(function () {
-            Route::get('/', 'index');
+            Route::get('/', 'index')->name('booking.index');
             Route::get('/edit/{id}', 'edit')->name('booking.edit');
-            Route::get('/statusBoking/{id}/{status}', 'statusBoking')->name('booking.status');
+            Route::post('/statusBoking/{id}/{status}', 'statusBoking')->name('booking.status');
             Route::post('/update/{id}', 'update')->name('booking.update');
+            Route::post('/confirm-payment/{id}', 'confirmPayment')->name('booking.confirmPayment');
             Route::delete('/delete/{id}', 'destroy')->name('booking.delete');
         });
     });
@@ -82,6 +86,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::controller(UserController::class)->group(function () {
         Route::prefix('pengguna')->group(function () {
             Route::get('/', 'index');
+            Route::get('/edit/{id}', 'edit')->name('pengguna.edit');
+            Route::put('/update/{id}', 'update')->name('pengguna.update');
+            Route::delete('/delete/{id}', 'destroy')->name('pengguna.delete');
             Route::post('/orders', 'store');
         });
     });
@@ -93,6 +100,15 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
             Route::put('/update/{id}', 'update')->name('rating.update');
             Route::delete('/delete/{id}', 'destroy')->name('rating.delete');
             Route::get('/toggleStatus/{id}', 'toggleStatus')->name('rating.toggleStatus');
+        });
+    });
+
+    Route::controller(PindahController::class)->group(function () {
+        Route::prefix('pindah')->group(function () {
+            Route::get('/', 'index')->name('pindah.index');
+            Route::get('/create', 'create')->name('pindah.create');
+            Route::post('/store', 'store')->name('pindah.store');
+            Route::delete('/delete/{id}', 'destroy')->name('pindah.delete');
         });
     });
 });

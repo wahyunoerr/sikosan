@@ -144,7 +144,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="text-end">
-                                <button class="btn btn-success me-3" type="submit">Tambah</button>
+                                <button class="btn btn-success me-3" type="submit">Ubah</button>
                                 <a class="btn btn-danger" href="{{ url('/kamar') }}">Batal</a>
                             </div>
                         </div>

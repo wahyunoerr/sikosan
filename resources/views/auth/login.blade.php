@@ -66,25 +66,25 @@
                                             is-invalid
                                         @enderror"
                                             type="password" name="password" required placeholder="*********"
-                                            autocomplete="current-password">
+                                            autocomplete="current-password" id="password">
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
-                                        <div class="show-hide"><span class="show"> </span></div>
+                                        <div class="show-hide" onclick="togglePasswordVisibility('password')"><span
+                                                class="show"> </span></div>
                                     </div>
                                 </div>
                                 <div class="form-group mb-0">
                                     <div class="checkbox p-0">
-                                        <input id="checkbox1" type="checkbox">
                                         <div class="text-end mt-3">
                                             <button class="btn btn-primary btn-block w-100" type="submit">Sign in
                                             </button>
                                         </div>
                                     </div>
                                     <p class="mt-4 mb-0 text-center">Don't have account?<a class="ms-2"
-                                            href="sign-up.html">Create Account</a></p>
+                                            href="{{ route('register') }}">Create Account</a></p>
                             </form>
                         </div>
                     </div>
@@ -94,6 +94,17 @@
     </div>
 
     @include('layouts.script')
+
+    <script>
+        function togglePasswordVisibility(id) {
+            const input = document.getElementById(id);
+            if (input.type === "password") {
+                input.type = "text";
+            } else {
+                input.type = "password";
+            }
+        }
+    </script>
 </body>
 
 </html>

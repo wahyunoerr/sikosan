@@ -85,25 +85,21 @@
                                                     <div class="d-flex justify-content-between flex-lg-wrap">
                                                         <p class="text-dark fs-5 fw-bold mb-0">Rp.
                                                             {{ number_format($images[0]->harga) }}</p>
-                                                        @if ($images[0]->status == 'Belum Dihuni')
-                                                            @if (auth()->check() && $images[0]->booked_by_user && $images[0]->booking_status == 'Menunggu')
-                                                                <div
-                                                                    class="d-flex justify-content-center w-100 mt-3 mt-lg-0">
-                                                                    <button
-                                                                        class="btn border border-warning rounded-pill px-3 text-warning w-100">
-                                                                        <i
-                                                                            class="fa fa-exclamation-triangle me-2 text-warning"></i>
-                                                                        Anda sudah melakukan booking di kamar ini
-                                                                    </button>
-                                                                </div>
-                                                            @else
-                                                                <a href="{{ route('landing.getKamar', $images[0]->id) }}"
-                                                                    class="btn border border-secondary rounded-pill px-3 text-primary">
-                                                                    <i class="fa fa-ticket-alt me-2 text-primary"></i>
-                                                                    Booking
-                                                                    Sekarang!
-                                                                </a>
-                                                            @endif
+                                                        @if (auth()->check() && $images[0]->booked_by_user && $images[0]->booking_status == 'Menunggu')
+                                                            <div class="d-flex justify-content-center w-100 mt-3 mt-lg-0">
+                                                                <button
+                                                                    class="btn border border-warning rounded-pill px-3 text-warning w-100">
+                                                                    <i
+                                                                        class="fa fa-exclamation-triangle me-2 text-warning"></i>
+                                                                    Anda sudah melakukan booking di kamar ini
+                                                                </button>
+                                                            </div>
+                                                        @else
+                                                            <a href="{{ route('landing.getKamar', $images[0]->id) }}"
+                                                                class="btn border border-secondary rounded-pill px-3 text-primary">
+                                                                <i class="fa fa-ticket-alt me-2 text-primary"></i>
+                                                                Lihat Kamar
+                                                            </a>
                                                         @endif
                                                     </div>
                                                 </div>

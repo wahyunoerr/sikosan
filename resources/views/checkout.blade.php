@@ -99,21 +99,27 @@
                                 @php
                                     $rating = $averageRating ?? 0;
                                     $fullStars = floor($rating);
+                                    $halfStar = $rating - $fullStars >= 0.5;
                                 @endphp
                                 @for ($i = 0; $i < 5; $i++)
                                     @if ($i < $fullStars)
                                         <i class="fa fa-star text-warning"></i>
+                                    @elseif ($i == $fullStars && $halfStar)
+                                        <i class="fa fa-star-half-alt text-warning"></i>
                                     @else
                                         <i class="fa fa-star text-black-50"></i>
                                     @endif
                                 @endfor
+                                <p class="mb-3">{{ number_format($averageRating, 1) }}</p>
                             </div>
                             <div class="mb-4">
                                 @auth
-                                    <a href="#" class="btn border border-secondary rounded-pill px-5 text-primary"
-                                        data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                        <i class="fa fa-shopping-cart me-3"></i> Booking!
-                                    </a>
+                                    @if ($kamar->status == 'Belum Dihuni')
+                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal">
+                                            <i class="fa fa-shopping-cart me-2"></i> Booking!
+                                        </button>
+                                    @endif
 
                                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                                         aria-hidden="true">
@@ -172,6 +178,13 @@
                                                                     </p>
                                                                 </div>
                                                             </div>
+                                                            <div class="col-md-12">
+                                                                <div class="alert alert-info" role="alert">
+                                                                    <strong>Note:</strong> Anda diwajibkan membayar DP (Down
+                                                                    Payment) sebesar 20% dari harga kamar untuk melanjutkan
+                                                                    proses booking.
+                                                                </div>
+                                                            </div>
                                                             <div class="col-md-3">
                                                                 <label for="namaLengkapDisabled" class="form-label">Nama
                                                                     Lengkap
@@ -188,25 +201,32 @@
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-3">
-                                                                <label for="hargaKamarDisabled" class="form-label">Harga
-                                                                    Kamar</label>
+                                                                <label for="dpKamarDisabled" class="form-label">DP
+                                                                    (20%)
+                                                                </label>
                                                                 <div class="input-group mb-3">
                                                                     <span class="input-group-text"
                                                                         id="basic-addon1">Rp.</span>
-                                                                    <input type="text" class="form-control"
-                                                                        name="hargaKamarDisabled"
-                                                                        value="{{ number_format($kamar->harga ?? 0) }}"
-                                                                        id="hargaKamarDisabled" placeholder="Harga Kamar"
-                                                                        aria-label="Harga Kamar" disabled readonly>
+                                                                    <input type="text" class="form-control" name="dp"
+                                                                        value="{{ number_format($kamar->harga * 0.2, 0, ',', '.') }}"
+                                                                        id="dpKamarDisabled" placeholder="DP Kamar"
+                                                                        aria-label="DP Kamar" disabled readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <label for="uploadBukti" class="form-label">Upload Bukti
+                                                                <label for="bukti_dp" class="form-label">Upload Bukti
                                                                     Pembayaran</label>
                                                                 <div class="input-group mb-3">
-                                                                    <input class="form-control" type="file"
-                                                                        id="uploadBukti" name="uploadBukti">
+                                                                    <input class="form-control" type="file" id="bukti_dp"
+                                                                        name="bukti_dp">
                                                                 </div>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label for="hargaKamar" class="form-label">Harga Kamar</label>
+                                                                <input type="text" name="harga" class="form-control"
+                                                                    id="hargaKamar"
+                                                                    value="Rp. {{ number_format($kamar->harga, 0, ',', '.') }}"
+                                                                    readonly>
                                                             </div>
                                                             <input class="d-none" type="text" id="kamarID"
                                                                 name="kamarID" value="{{ $kamar->id }}">
@@ -263,8 +283,8 @@
                                                 <div class="card-body">
                                                     <div class="d-flex align-items-center mb-2">
                                                         @php
-                                                            $rating = $averageRating ?? 0;
-                                                            $fullStars = floor($rating);
+                                                            $userRating = $review->rating ?? 0;
+                                                            $fullStars = floor($userRating);
                                                         @endphp
                                                         @for ($i = 0; $i < 5; $i++)
                                                             @if ($i < $fullStars)
@@ -339,14 +359,18 @@
             imagePreviewOverlay.classList.add("d-none");
         });
 
-        // Initialize overlay image
+
         updateOverlayImage(currentIndex);
 
-        // Star rating click event
         const stars = document.querySelectorAll('.fa-star');
         const ratingModal = document.getElementById('ratingModal');
         const ratingStars = document.querySelectorAll('.rating-star');
         let selectedRating = 0;
+
+        function resetRatingStars() {
+            selectedRating = 0;
+            updateRatingStars(selectedRating);
+        }
 
         stars.forEach((star, index) => {
             star.addEventListener('click', () => {
@@ -384,18 +408,19 @@
             });
         }
 
-        // Close rating modal
+
         document.getElementById('ratingModalClose').addEventListener('click', () => {
             ratingModal.style.display = 'none';
+            resetRatingStars();
         });
 
-        // Submit rating
+
         document.getElementById('submitRating').addEventListener('click', () => {
-            // Handle rating submission logic here
+
             ratingModal.style.display = 'none';
         });
 
-        // Initialize overlay image
+
         updateOverlayImage(currentIndex);
     </script>
 
@@ -447,7 +472,7 @@
                 @endfor
                 <input type="hidden" name="rating" id="ratingInput">
             </div>
-            <textarea class="form-control mb-3" name="review" rows="3" placeholder="Write your review here..."></textarea>
+            <textarea class="form-control mb-3" name="review" rows="3" placeholder="Write your review here..." required></textarea>
             <button type="submit" class="btn btn-primary">Submit</button>
             <button type="button" id="ratingModalClose" class="btn btn-secondary">Close</button>
         </form>

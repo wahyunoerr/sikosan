@@ -74,11 +74,17 @@ class LandingController extends Controller
             ->where('kamar_id', $id)
             ->get();
 
-        $totalStars = DB::table('reviews')->sum('rating');
+        $totalStars = DB::table('reviews')->where('kamar_id', $id)->sum('rating');
         $totalReviews = DB::table('reviews')->where('kamar_id', $id)->count();
 
         $averageRating = $totalReviews > 0 ? $totalStars / $totalReviews : 0;
-        $requiredReviewsForFiveStar = max(500, ceil(($totalReviews * 5 - $totalStars) / (5 - $averageRating)));
+        $requiredReviewsForFiveStar = $averageRating < 5
+            ? max(500, ceil(($totalReviews * 5 - $totalStars) / (5 - $averageRating)))
+            : 0;
+
+        $requiredReviewsForFourPointSevenStar = $averageRating < 4.7
+            ? max(500, ceil(($totalReviews * 4.7 - $totalStars) / (4.7 - $averageRating)))
+            : 0;
 
         $userHasRated = $reviews->where('user_id', auth()->id())->isNotEmpty();
 
@@ -87,7 +93,7 @@ class LandingController extends Controller
 
         $kamar = (object) $kamar;
 
-        return view('checkout', compact('kamar', 'images', 'rekening', 'reviews', 'averageRating', 'totalStars', 'totalReviews', 'requiredReviewsForFiveStar', 'userHasRated'));
+        return view('checkout', compact('kamar', 'images', 'rekening', 'reviews', 'averageRating', 'totalStars', 'totalReviews', 'requiredReviewsForFiveStar', 'requiredReviewsForFourPointSevenStar', 'userHasRated'));
     }
 
     /**

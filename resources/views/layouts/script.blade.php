@@ -40,3 +40,4 @@
  <!-- Template js-->
  <script src="{{ asset('assets/js/script.js') }}"></script>
  <!-- login js-->
+ @stack('scripts')

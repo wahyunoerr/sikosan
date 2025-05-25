@@ -15,9 +15,16 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('kamar_id');
-            $table->string('harga_kamar_booking');
-            $table->string('bukti_bayar');
+            $table->string('dp', 100);
+            $table->string('bukti_dp');
+            $table->string('harga_kamar_booking', 100);
+            $table->date('tanggal_booking');
+            $table->date('tanggal_checkin')->nullable();
+            $table->date('tanggal_checkout')->nullable();
+            $table->string('lama_sewa', 100);
             $table->enum('status', ['Menunggu', 'Disetujui', 'Ditolak'])->default('Menunggu');
+            $table->string('keterangan', 100)->nullable();
+            $table->boolean('is_paid')->default(false);
             $table->timestamps();
 
             $table->foreign('customer_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

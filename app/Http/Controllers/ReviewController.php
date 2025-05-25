@@ -12,6 +12,10 @@ class ReviewController extends Controller
      */
     public function index()
     {
+        $title = 'Hapus Data!';
+        $text = "Apakah anda yakin?";
+        confirmDelete($title, $text);
+
         $data = DB::table('reviews')
             ->join('tbl_kamar', 'reviews.kamar_id', '=', 'tbl_kamar.id')
             ->join('users', 'reviews.user_id', '=', 'users.id')
