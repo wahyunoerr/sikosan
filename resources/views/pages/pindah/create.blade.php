@@ -19,16 +19,18 @@
                 <form action="{{ route('pindah.store') }}" method="POST">
                     @csrf
                     <div class="mb-3">
-                        <label for="booking_id" class="form-label">Booking</label>
+                        <label for="customer_id" class="form-label">Customer</label>
                         <select name="booking_id" id="booking_id" class="form-control" required>
-                            <option value="">-- Pilih Booking --</option>
-                            @php
-                                $usedCustomerIds = [];
-                            @endphp
+                            <option value="">-- Pilih Customer --</option>
+                            @php $usedCustomerIds = []; @endphp
                             @foreach ($booking as $b)
                                 @if ($b->status === 'Disetujui' && !in_array($b->customer_id, $usedCustomerIds))
-                                    <option value="{{ $b->id }}">Customer: {{ $b->customer_name }} | Kamar:
-                                        {{ $b->kamar_id }}</option>
+                                    <option value="{{ $b->id }}"
+                                        data-kamar="{{ $kamar->firstWhere('id', $b->kamar_id)->nomor ?? '' }}"
+                                        data-kamarid="{{ $b->kamar_id }}">
+                                        {{ $b->customer_name }} | Kamar:
+                                        {{ $kamar->firstWhere('id', $b->kamar_id)->nomor ?? $b->kamar_id }}
+                                    </option>
                                     @php $usedCustomerIds[] = $b->customer_id; @endphp
                                 @endif
                             @endforeach
@@ -61,17 +63,9 @@
     </div>
     <script>
         document.getElementById('booking_id').addEventListener('change', function() {
-            var selectedId = this.value;
-            var kamarNomor = '';
-            var kamarId = '';
-            @foreach ($booking as $b)
-                if ('{{ $b->id }}' == selectedId) {
-                    kamarNomor = @json($kamar->firstWhere('id', $b->kamar_id)->nomor ?? '');
-                    kamarId = {{ $b->kamar_id }};
-                }
-            @endforeach
-            document.getElementById('kamar_lama_nomor').value = kamarNomor;
-            document.getElementById('kamar_lama_id').value = kamarId;
+            var selected = this.options[this.selectedIndex];
+            document.getElementById('kamar_lama_nomor').value = selected.getAttribute('data-kamar') || '';
+            document.getElementById('kamar_lama_id').value = selected.getAttribute('data-kamarid') || '';
         });
         if (document.getElementById('booking_id').value) {
             document.getElementById('booking_id').dispatchEvent(new Event('change'));

@@ -15,8 +15,9 @@ class PindahController extends Controller
         confirmDelete($title, $text);
         $pindah = DB::table('tbl_pindah')
             ->join('tbl_booking', 'tbl_pindah.booking_id', '=', 'tbl_booking.id')
+            ->join('users', 'tbl_booking.customer_id', '=', 'users.id')
             ->join('tbl_kamar as kamar_lama', 'tbl_pindah.kamar_lama_id', '=', 'kamar_lama.id')
-            ->select('tbl_pindah.*', 'kamar_lama.nomor as nomor_lama', 'tbl_booking.customer_id')
+            ->select('tbl_pindah.*', 'kamar_lama.nomor as nomor_lama', 'tbl_booking.customer_id', 'users.name as customer_name')
             ->orderByDesc('tbl_pindah.tanggal_pindah')
             ->get();
         return view('pages.pindah.index', compact('pindah'));

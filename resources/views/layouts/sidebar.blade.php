@@ -28,6 +28,7 @@
                                 data-feather="airplay"></i><span>Master Data</span></a>
                         <ul class="sidebar-submenu">
                             <li><a href="/kamar">Kamar</a></li>
+                            <li><a href="/kamar/listKamar">List Kamar</a></li>
                             <li><a href="/rekening">Info Rekening</a></li>
                             <li><a href="/pengguna">Pengguna</a></li>
                         </ul>

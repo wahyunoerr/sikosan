@@ -188,11 +188,21 @@ class KamarController extends Controller
                 'tbl_pindah.*',
                 'users.name as nama_customer',
                 'kamar_lama.nomor as nomor_kamar_lama',
-                'tbl_booking.customer_id'
+                'tbl_booking.customer_id',
+                'tbl_booking.tanggal_booking',
+                'kamar_lama.id as kamar_id',
+                'kamar_lama.lantai',
+                'kamar_lama.status',
+                'kamar_lama.fasilitas',
+                'kamar_lama.alamat'
             )
             ->orderBy('tbl_pindah.tanggal_pindah', 'desc')
             ->get();
-        return view('pages.kamar.riwayat_kamar', compact('riwayat'));
+        // Data kamar indexed by id
+        $dataKamar = DB::table('tbl_kamar')->get()->keyBy('id');
+        // Gambar kamar indexed by kamar_id
+        $gambarKamar = DB::table('tbl_upload_file_image')->get()->groupBy('kamar_id');
+        return view('pages.kamar.riwayat_kamar', compact('riwayat', 'dataKamar', 'gambarKamar'));
     }
 
 
@@ -219,5 +229,28 @@ class KamarController extends Controller
             ->groupBy('kamar_lama_id');
 
         return view('pages.kamar.laporan_kosong', compact('kamar_kosong', 'histori'));
+    }
+
+    function listKamar()
+    {
+        $kamar = DB::table('tbl_kamar')->get();
+        $gambarKamar = DB::table('tbl_upload_file_image')->get()->groupBy('kamar_id');
+        $penghuniAktif = DB::table('tbl_booking')
+            ->join('users', 'tbl_booking.customer_id', '=', 'users.id')
+            ->where('tbl_booking.status', 'Disetujui')
+            ->select('tbl_booking.kamar_id', 'users.name as nama_customer')
+            ->get()->keyBy('kamar_id');
+        $riwayatPindah = DB::table('tbl_pindah')
+            ->join('tbl_booking', 'tbl_pindah.booking_id', '=', 'tbl_booking.id')
+            ->join('users', 'tbl_booking.customer_id', '=', 'users.id')
+            ->select('tbl_pindah.kamar_lama_id', 'users.name as nama_customer', 'tbl_pindah.tanggal_pindah')
+            ->orderByDesc('tbl_pindah.tanggal_pindah')
+            ->get()->groupBy('kamar_lama_id');
+        $bookingInfo = DB::table('tbl_booking')
+            ->where('status', 'Disetujui')
+            ->select('kamar_id', 'tanggal_booking')
+            ->get()
+            ->keyBy('kamar_id');
+        return view('pages.kamar.listKamar', compact('kamar', 'gambarKamar', 'penghuniAktif', 'riwayatPindah', 'bookingInfo'));
     }
 }

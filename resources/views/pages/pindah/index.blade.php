@@ -17,7 +17,7 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Booking ID</th>
+                                <th>Customer</th>
                                 <th>Kamar Lama</th>
                                 <th>Tanggal Pindah</th>
                                 <th>Alasan</th>
@@ -28,7 +28,7 @@
                             @foreach ($pindah as $d)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $d->booking_id }}</td>
+                                    <td>{{ $d->customer_name ?? '-' }}</td>
                                     <td>{{ $d->nomor_lama }}</td>
                                     <td>{{ $d->tanggal_pindah }}</td>
                                     <td>{{ $d->alasan }}</td>

@@ -51,6 +51,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
             Route::delete('/delete/{id}', 'destroy')->name('kamar.delete');
             Route::get('/riwayat', 'riwayat')->name('kamar.riwayat');
             Route::get('/laporan-kosong', 'laporanKosong')->name('kamar.laporan.kosong');
+            Route::get('/listKamar', 'listKamar')->name('kamar.list');
         });
     });
 
